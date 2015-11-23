@@ -5,3 +5,4 @@ PatchWeave is a Coding-Agent Change Review Lab that connects change manifests wi
 ## System flow
 
 `	ext
+fixtures or operator input -> parser -> normalized domain records -> analysis engine -> report model -> terminal / JSON / Markdown
