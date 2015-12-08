@@ -11,3 +11,4 @@ fixtures or operator input -> parser -> normalized domain records -> analysis en
 ## Components
 
 - **Python package** owns command handling, portable parsers, report assembly and example workflows.
+- **Native companion** mirrors the central calculation for compact command-line use and implementation parity.
