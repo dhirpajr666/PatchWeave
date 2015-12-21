@@ -8,3 +8,8 @@ schema minor is bumped when fields are added and the major when fields are
 removed or repurposed.
 
 ## [Unreleased]
+
+## [1.0.1] - 2026-06-23
+
+### Added
+- `SUPPORT.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md`, `CONTRIBUTING.md`,
