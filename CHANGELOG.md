@@ -19,3 +19,8 @@ removed or repurposed.
   as the documented fixtures for every workflow recipe.
 
 ### Changed
+- Queue scoring normalizes the four weights (`risk,surface,gap,blast`) before
+  use, so `--weights` need not sum to one.
+
+## [1.0.0] - 2025-09-16
+
