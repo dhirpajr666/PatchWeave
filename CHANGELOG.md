@@ -24,3 +24,9 @@ removed or repurposed.
 
 ## [1.0.0] - 2025-09-16
 
+### Added
+- Stable CLI contract: the five verbs (`weave`, `queue`, `brief`, `gaps`,
+  `metrics`) and the documented exit codes (`0` success, `1` input error,
+  `2` gate tripped).
+- Compile-only CI workflow and the `Makefile` targets for both language
+  components.
