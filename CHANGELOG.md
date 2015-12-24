@@ -35,3 +35,8 @@ removed or repurposed.
 
 ### Added
 - Project scaffolding: `pyproject.toml`, `.gitignore`, `.editorconfig`, and
+  `.env.example`.
+
+### Changed
+- Terminal brief reworked around the risk histogram and the top slice of the
+  review queue.
