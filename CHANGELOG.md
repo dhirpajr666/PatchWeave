@@ -30,3 +30,8 @@ removed or repurposed.
   `2` gate tripped).
 - Compile-only CI workflow and the `Makefile` targets for both language
   components.
+
+## [0.9.0] - 2024-06-11
+
+### Added
+- Project scaffolding: `pyproject.toml`, `.gitignore`, `.editorconfig`, and
