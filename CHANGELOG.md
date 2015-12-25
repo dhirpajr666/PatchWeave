@@ -40,3 +40,9 @@ removed or repurposed.
 ### Changed
 - Terminal brief reworked around the risk histogram and the top slice of the
   review queue.
+
+## [0.7.0] - 2021-10-19
+
+### Added
+- `--weights r,s,g,b` on `weave`, `queue`, and `brief` to re-weight the scoring
+  blend for a review.
