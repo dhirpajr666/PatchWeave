@@ -51,3 +51,8 @@ removed or repurposed.
 ## [0.6.0] - 2020-11-10
 
 ### Added
+- `queue` verb: emit only the ranked review queue, as text or `--format json`.
+
+## [0.5.0] - 2019-09-24
+
+### Added
