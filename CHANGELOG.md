@@ -56,3 +56,9 @@ removed or repurposed.
 ## [0.5.0] - 2019-09-24
 
 ### Added
+- `brief` verb with `text`, `markdown`, and `json` renderers; the Markdown brief
+  renders a governance-gaps table and a numbered review queue for pasting into a
+  pull request body.
+- JSON artifacts stamped with the `patchweave/v1` schema identifier.
+
+## [0.4.0] - 2018-10-02
