@@ -46,3 +46,8 @@ removed or repurposed.
 ### Added
 - `--weights r,s,g,b` on `weave`, `queue`, and `brief` to re-weight the scoring
   blend for a review.
+- `--color` ANSI rendering for the terminal brief.
+
+## [0.6.0] - 2020-11-10
+
+### Added
