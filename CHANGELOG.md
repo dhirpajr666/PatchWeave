@@ -62,3 +62,8 @@ removed or repurposed.
 - JSON artifacts stamped with the `patchweave/v1` schema identifier.
 
 ## [0.4.0] - 2018-10-02
+
+### Added
+- `gaps` verb: prints every unanchored change, unmet requirement, and unknown
+  reference and exits with code `2` when the total exceeds `--max-gaps`, making
+  PatchWeave usable as a merge gate.
