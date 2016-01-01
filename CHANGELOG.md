@@ -67,3 +67,9 @@ removed or repurposed.
 - `gaps` verb: prints every unanchored change, unmet requirement, and unknown
   reference and exits with code `2` when the total exceeds `--max-gaps`, making
   PatchWeave usable as a merge gate.
+
+### Fixed
+- Explicit anchors now correctly suppress implicit glob anchors so an authored
+  requirement id is never second-guessed by glob inference.
+
+## [0.3.0] - 2017-11-21
