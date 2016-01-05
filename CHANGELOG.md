@@ -73,3 +73,8 @@ removed or repurposed.
   requirement id is never second-guessed by glob inference.
 
 ## [0.3.0] - 2017-11-21
+
+### Added
+- Native C++17 metric engine (`core/patch_metrics.cpp`) with an on-demand
+  compiling bridge (`patchweave/native.py`) and a behaviorally identical
+  pure-Python fallback selectable with `--pure`.
