@@ -78,3 +78,8 @@ removed or repurposed.
 - Native C++17 metric engine (`core/patch_metrics.cpp`) with an on-demand
   compiling bridge (`patchweave/native.py`) and a behaviorally identical
   pure-Python fallback selectable with `--pure`.
+
+## [0.2.0] - 2016-11-08
+
+### Added
+- `QueueBuilder` and the four-signal review-queue scoring model with
