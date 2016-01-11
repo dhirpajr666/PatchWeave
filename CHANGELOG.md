@@ -83,3 +83,9 @@ removed or repurposed.
 
 ### Added
 - `QueueBuilder` and the four-signal review-queue scoring model with
+  deterministic score-descending, path-ascending ordering.
+
+## [0.1.0] - 2015-11-17
+
+### Added
+- Initial release: manifest and catalog loaders, the `Weaver` anchoring engine
