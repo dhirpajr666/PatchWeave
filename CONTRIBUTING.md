@@ -8,3 +8,4 @@ Contributions are most effective when they begin with a small fixture that demon
 3. Keep output stable, readable and structured for downstream tooling.
 4. Describe the motivation, data shape and report impact in the pull request.
 
+## Review focus
