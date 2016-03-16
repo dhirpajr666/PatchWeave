@@ -2,3 +2,4 @@
 
 compile: python native
 
+python:
