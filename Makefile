@@ -6,3 +6,4 @@ python:
 	python -m compileall -q patchweave
 
 native:
+	g++ -std=c++17 -Wall -Wextra -pedantic -fsyntax-only core/patch_metrics.cpp
