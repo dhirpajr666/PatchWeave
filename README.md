@@ -1,0 +1,48 @@
+# PatchWeave
+
+**Coding-Agent Change Review Lab** — weave a change manifest and a requirement
+catalog into an auditable review artifact. PatchWeave answers the question every
+reviewer of AI-generated (or human) diffs eventually asks out loud: *"Which of
+these edits was actually authorized, and which requirements did nobody touch?"*
+
+![PatchWeave loom banner](docs/assets/loom-banner.svg)
+
+PatchWeave treats a review the way a loom treats cloth. Your **requirements** are
+the *warp* — the fixed vertical threads that give the fabric its structure. Your
+**changes** are the *weft* — the horizontal threads a coding session lays across
+the warp. A healthy change set is tightly woven: every weft thread crosses a warp
+thread (every change is *anchored* to a requirement), and every warp thread is
+crossed at least once (every requirement is *met*). PatchWeave finds the loose
+threads — unanchored edits, unmet requirements, dangling references — and hands
+you a ranked queue so you review the dangerous parts first.
+
+---
+
+## Table of contents
+
+- [Why PatchWeave exists](#why-patchweave-exists)
+- [The two input documents](#the-two-input-documents)
+- [Core concepts and vocabulary](#core-concepts-and-vocabulary)
+- [Architecture](#architecture)
+- [Installation](#installation)
+- [Command-line reference](#command-line-reference)
+- [Workflows and CLI recipes](#workflows-and-cli-recipes)
+- [The anchoring algorithm](#the-anchoring-algorithm)
+- [The review-queue scoring model](#the-review-queue-scoring-model)
+- [The native metric engine](#the-native-metric-engine)
+- [Output schemas](#output-schemas)
+- [Operations and CI gating](#operations-and-ci-gating)
+- [Extension seams](#extension-seams)
+- [Design identity](#design-identity)
+- [Glossary](#glossary)
+
+---
+
+## Why PatchWeave exists
+
+Coding agents produce diffs at a rate no human review process was designed for.
+A single agent session might touch thirty files across five subsystems, cite a
+handful of ticket ids in its commit body, and leave the rest unattributed. The
+traditional review tools — a side-by-side diff and a mental checklist — collapse
+under that volume. Two failure modes dominate:
+
