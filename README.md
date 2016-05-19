@@ -46,3 +46,16 @@ handful of ticket ids in its commit body, and leave the rest unattributed. The
 traditional review tools — a side-by-side diff and a mental checklist — collapse
 under that volume. Two failure modes dominate:
 
+1. **Unanchored drift.** The agent edited a file that no requirement asked it to
+   touch. Sometimes that is legitimate collateral (a shared helper had to change);
+   often it is scope creep, a stray refactor, or an outright mistake. Either way
+   it deserves a *conscious* review decision rather than being buried in the pile.
+
+2. **Silent gaps.** A requirement was on the list, the session claimed success,
+   and yet no change in the manifest supports it. The work looks done because the
+   loud, easy requirements got attention while the quiet, risky one slipped.
+
+PatchWeave makes both visible and *ranks* them, so a reviewer's scarce attention
+flows to the riskiest, least-covered work first. It is deliberately small,
+dependency-free, and deterministic: the same inputs always produce the same
+brief, which makes it safe to wire into a gate.
