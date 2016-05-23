@@ -59,3 +59,17 @@ PatchWeave makes both visible and *ranks* them, so a reviewer's scarce attention
 flows to the riskiest, least-covered work first. It is deliberately small,
 dependency-free, and deterministic: the same inputs always produce the same
 brief, which makes it safe to wire into a gate.
+
+---
+
+## The two input documents
+
+PatchWeave consumes exactly two JSON documents. Both are plain, hand-editable,
+and version-control-friendly.
+
+### Change manifest
+
+Describes what a work session touched. Each entry is a *hunk* — one file, with
+line-delta counts, the requirement ids it claims to satisfy, and an optional
+reviewer sign-off.
+
