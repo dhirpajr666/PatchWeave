@@ -73,3 +73,17 @@ Describes what a work session touched. Each entry is a *hunk* — one file, with
 line-delta counts, the requirement ids it claims to satisfy, and an optional
 reviewer sign-off.
 
+```json
+{
+  "session": "agent-2026-09-01-checkout-refactor",
+  "branch": "feat/checkout-idempotency",
+  "changes": [
+    {
+      "path": "src/checkout/idempotency.py",
+      "kind": "add",
+      "added": 141,
+      "removed": 0,
+      "requirements": ["REQ-CHK-1", "REQ-CHK-2"],
+      "reviewer": "dana"
+    }
+  ]
