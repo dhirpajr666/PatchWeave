@@ -87,3 +87,16 @@ reviewer sign-off.
       "reviewer": "dana"
     }
   ]
+}
+```
+
+| Field          | Type      | Meaning                                              |
+| -------------- | --------- | ---------------------------------------------------- |
+| `path`         | string    | File touched (required, non-empty).                  |
+| `kind`         | string    | `add` \| `modify` \| `delete` \| `rename`.           |
+| `added`        | int ≥ 0   | Lines added.                                         |
+| `removed`      | int ≥ 0   | Lines removed.                                       |
+| `requirements` | string[]  | Requirement ids this change claims to satisfy.       |
+| `reviewer`     | string?   | Who signed off; absence means *unreviewed*.          |
+
+### Requirement catalog
