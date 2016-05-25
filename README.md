@@ -100,3 +100,17 @@ reviewer sign-off.
 | `reviewer`     | string?   | Who signed off; absence means *unreviewed*.          |
 
 ### Requirement catalog
+
+Describes the intended scope of work — the warp threads.
+
+```json
+{
+  "release": "2026.09-checkout",
+  "requirements": [
+    {
+      "id": "REQ-CHK-1",
+      "title": "Checkout sessions must be idempotent under client retries",
+      "risk": "critical",
+      "owner": "dana",
+      "globs": ["src/checkout/*.py"]
+    }
