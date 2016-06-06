@@ -114,3 +114,17 @@ Describes the intended scope of work — the warp threads.
       "owner": "dana",
       "globs": ["src/checkout/*.py"]
     }
+  ]
+}
+```
+
+| Field   | Type     | Meaning                                                        |
+| ------- | -------- | -------------------------------------------------------------- |
+| `id`    | string   | Stable identifier (required, unique across the catalog).       |
+| `title` | string   | Human-readable statement of intent.                            |
+| `risk`  | string   | `routine` \| `notable` \| `elevated` \| `critical`.            |
+| `globs` | string[] | Path globs this requirement is expected to touch.              |
+| `owner` | string?  | Accountable person or team.                                    |
+
+Both loaders are strict about *structure* and lenient about *forward
+compatibility*: unknown top-level keys are ignored, but a malformed entry raises
