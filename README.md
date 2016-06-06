@@ -128,3 +128,16 @@ Describes the intended scope of work — the warp threads.
 
 Both loaders are strict about *structure* and lenient about *forward
 compatibility*: unknown top-level keys are ignored, but a malformed entry raises
+`ManifestError` rather than silently producing a misleading brief.
+
+---
+
+## Core concepts and vocabulary
+
+- **Anchor** — a resolved link between a changed path and a requirement id. An
+  anchor is *explicit* (the change listed the id) or *implicit* (the change's
+  path matched a requirement glob).
+- **Unanchored change** — a hunk with no resolved anchor at all. The loudest
+  governance signal PatchWeave emits.
+- **Unknown reference** — a hunk that cited a requirement id which does not exist
+  in the catalog (a stale or fat-fingered ticket).
