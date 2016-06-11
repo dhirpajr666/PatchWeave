@@ -196,3 +196,17 @@ PatchWeave requires only Python 3.11+. There are no third-party dependencies.
 python -m patchweave --version
 ```
 
+The native metric engine additionally uses a C++17 compiler (`g++`, `clang++`,
+or `c++`) if one is on `PATH`. It is compiled on demand and cached; when absent,
+the `metrics` verb transparently falls back to an identical pure-Python
+implementation.
+
+---
+
+## Command-line reference
+
+```
+patchweave <verb> [options]
+
+  weave    --manifest FILE --catalog FILE [--color] [--weights r,s,g,b]
+  queue    --manifest FILE --catalog FILE [--format text|json] [--weights ...]
