@@ -141,3 +141,17 @@ compatibility*: unknown top-level keys are ignored, but a malformed entry raises
   governance signal PatchWeave emits.
 - **Unknown reference** — a hunk that cited a requirement id which does not exist
   in the catalog (a stale or fat-fingered ticket).
+- **Requirement state** — `unmet` (no supporting change), `partial` (has changes
+  but at least one is unreviewed), or `reviewed` (met and fully signed off).
+- **Patch surface** — the total added + removed lines across the manifest; the
+  raw size of what a reviewer must comprehend.
+- **Review item** — one entry in the ranked queue, carrying a priority score,
+  risk tier, churn, its requirement ids, and any flags.
+
+---
+
+## Architecture
+
+PatchWeave is a linear pipeline with one native side-branch. Each stage is a pure
+transformation over immutable dataclasses, which is what makes runs reproducible.
+
