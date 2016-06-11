@@ -182,3 +182,17 @@ Module responsibilities:
 | `patchweave/cli.py`    | Argument parsing and verb dispatch.                                        |
 | `core/patch_metrics.cpp` | Portable C++17 diff churn accumulator.                                   |
 
+See [ARCHITECTURE.md](ARCHITECTURE.md) for the data-flow contract and
+[DESIGN.md](DESIGN.md) for the reasoning behind the scoring model.
+
+---
+
+## Installation
+
+PatchWeave requires only Python 3.11+. There are no third-party dependencies.
+
+```bash
+# from the repository root
+python -m patchweave --version
+```
+
