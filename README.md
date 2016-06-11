@@ -169,3 +169,16 @@ transformation over immutable dataclasses, which is what makes runs reproducible
   diff ------------------------------> [ metrics ] --- C++17 patch_metrics.cpp
                                         (native.py bridge, pure-Python fallback)
 ```
+
+Module responsibilities:
+
+| Module              | Responsibility                                                             |
+| ------------------- | -------------------------------------------------------------------------- |
+| `patchweave/model.py`  | Dataclasses (`Hunk`, `Requirement`, `Manifest`, `Catalog`), loaders, validation. |
+| `patchweave/weave.py`  | `Weaver` resolves anchors, computes `RequirementStatus`, produces `WeaveReport`. |
+| `patchweave/queue.py`  | `QueueBuilder` scores and orders `ReviewItem`s.                            |
+| `patchweave/brief.py`  | Terminal, Markdown, and JSON renderers.                                    |
+| `patchweave/native.py` | Compiles and drives the C++ engine; pure-Python fallback.                  |
+| `patchweave/cli.py`    | Argument parsing and verb dispatch.                                        |
+| `core/patch_metrics.cpp` | Portable C++17 diff churn accumulator.                                   |
+
