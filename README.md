@@ -155,3 +155,17 @@ compatibility*: unknown top-level keys are ignored, but a malformed entry raises
 PatchWeave is a linear pipeline with one native side-branch. Each stage is a pure
 transformation over immutable dataclasses, which is what makes runs reproducible.
 
+![PatchWeave pipeline](docs/assets/pipeline.svg)
+
+```
+                +-----------+     +-----------+     +-----------+     +-----------+
+  manifest ---> |   load    | --> |   weave   | --> |   score   | --> |   brief   | ---> report
+  catalog  ---> | (model.py)|     | (weave.py)|     | (queue.py)|     | (brief.py)|      queue
+                +-----------+     +-----------+     +-----------+     +-----------+
+                                        |                                   ^
+                                        v                                   |
+                                   anchor map / gaps                        |
+                                                                            |
+  diff ------------------------------> [ metrics ] --- C++17 patch_metrics.cpp
+                                        (native.py bridge, pure-Python fallback)
+```
