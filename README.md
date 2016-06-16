@@ -223,3 +223,17 @@ patchweave <verb> [options]
 - `gaps` — a gate. Prints every unanchored change, unmet requirement, and
   unknown reference, and exits non-zero when the total exceeds `--max-gaps`.
 - `metrics` — runs the native churn engine over a raw unified diff.
+
+---
+
+## Workflows and CLI recipes
+
+### 1. Everyday review brief
+
+```bash
+python -m patchweave weave \
+  --manifest examples/manifest.json \
+  --catalog  examples/catalog.json --color
+```
+
+You get the anchor ratio, the risk histogram, and the top of the queue in one
