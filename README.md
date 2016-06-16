@@ -210,3 +210,16 @@ patchweave <verb> [options]
 
   weave    --manifest FILE --catalog FILE [--color] [--weights r,s,g,b]
   queue    --manifest FILE --catalog FILE [--format text|json] [--weights ...]
+  brief    --manifest FILE --catalog FILE [--format text|markdown|json] [--color]
+  gaps     --manifest FILE --catalog FILE [--max-gaps N]
+  metrics  --diff FILE [--format text|json] [--pure]
+```
+
+- `weave` — the everyday view: a terminal brief with surface totals, anchor
+  ratio, governance gaps, a risk histogram, and the top of the review queue.
+- `queue` — just the ranked list, for feeding into other tooling.
+- `brief` — the full artifact in your chosen format; `markdown` is designed to
+  paste directly into a pull request description.
+- `gaps` — a gate. Prints every unanchored change, unmet requirement, and
+  unknown reference, and exits non-zero when the total exceeds `--max-gaps`.
+- `metrics` — runs the native churn engine over a raw unified diff.
