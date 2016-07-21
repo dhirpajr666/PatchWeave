@@ -251,3 +251,16 @@ python -m patchweave brief \
 
 The Markdown brief renders a governance-gaps table and a numbered review queue —
 drop it into the PR body so reviewers share a single prioritized worklist.
+
+### 3. Gate a merge on governance health
+
+```bash
+python -m patchweave gaps \
+  --manifest examples/manifest.json \
+  --catalog  examples/catalog.json \
+  --max-gaps 0
+echo "exit: $?"   # non-zero when any gap remains
+```
+
+### 4. Re-weight the queue for a security review
+
