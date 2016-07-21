@@ -264,3 +264,17 @@ echo "exit: $?"   # non-zero when any gap remains
 
 ### 4. Re-weight the queue for a security review
 
+Emphasize governance gaps and risk, de-emphasize raw size:
+
+```bash
+python -m patchweave queue \
+  --manifest examples/manifest.json \
+  --catalog  examples/catalog.json \
+  --weights 0.45,0.05,0.40,0.10 --format json
+```
+
+The four weights are `risk,surface,gap,blast`; they are normalized internally so
+they need not sum to one.
+
+### 5. Machine-readable artifact for a dashboard
+
