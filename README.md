@@ -237,3 +237,17 @@ python -m patchweave weave \
 ```
 
 You get the anchor ratio, the risk histogram, and the top of the queue in one
+screen. Start at the top of the queue and work down; the ordering guarantees the
+riskiest, least-covered work is first.
+
+### 2. Paste-ready PR summary
+
+```bash
+python -m patchweave brief \
+  --manifest examples/manifest.json \
+  --catalog  examples/catalog.json \
+  --format markdown > review-brief.md
+```
+
+The Markdown brief renders a governance-gaps table and a numbered review queue —
+drop it into the PR body so reviewers share a single prioritized worklist.
