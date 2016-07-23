@@ -278,3 +278,17 @@ they need not sum to one.
 
 ### 5. Machine-readable artifact for a dashboard
 
+```bash
+python -m patchweave brief \
+  --manifest examples/manifest.json \
+  --catalog  examples/catalog.json \
+  --format json > brief.json
+```
+
+Every JSON artifact is stamped with `"schema": "patchweave/v1"`.
+
+### 6. Native churn metrics over a diff
+
+```bash
+python -m patchweave metrics --diff examples/sample.diff
+python -m patchweave metrics --diff examples/sample.diff --pure --format json
