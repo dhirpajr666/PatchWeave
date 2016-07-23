@@ -319,3 +319,17 @@ for hunk in manifest:
     anchors, unknown = [], []
     for rid in hunk.requirements:
         (anchors if rid in catalog else unknown).append(rid)
+    if not anchors:
+        for req in catalog:
+            if req.matches(hunk.path):
+                anchors.append(glob_anchor(hunk.path, req.id))
+    classify(hunk, anchors, unknown)
+```
+
+Coverage then rolls up per requirement: a requirement is `met` when at least one
+supporting path anchored to it, and `reviewed` only when *every* supporting path
+carries a reviewer.
+
+---
+
+## The review-queue scoring model
