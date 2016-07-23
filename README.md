@@ -305,3 +305,17 @@ Anchoring is the core resolution step. For each hunk:
    it under `unknown_refs` for that path.
 2. **Implicit pass.** *Only if the explicit pass produced no anchors*, test the
    hunk's path against every requirement's globs. Each match emits an
+   `Anchor(via="glob")`.
+3. **Unanchored.** If neither pass produced an anchor, the hunk lands in
+   `unanchored`.
+
+Explicit anchors deliberately suppress implicit ones: once an author has stated
+intent, PatchWeave trusts that statement rather than second-guessing it with glob
+heuristics. This keeps the model predictable — an author can always override glob
+inference by naming a requirement explicitly.
+
+```
+for hunk in manifest:
+    anchors, unknown = [], []
+    for rid in hunk.requirements:
+        (anchors if rid in catalog else unknown).append(rid)
