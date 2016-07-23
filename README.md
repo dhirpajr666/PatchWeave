@@ -292,3 +292,16 @@ Every JSON artifact is stamped with `"schema": "patchweave/v1"`.
 ```bash
 python -m patchweave metrics --diff examples/sample.diff
 python -m patchweave metrics --diff examples/sample.diff --pure --format json
+```
+
+---
+
+## The anchoring algorithm
+
+Anchoring is the core resolution step. For each hunk:
+
+1. **Explicit pass.** For every requirement id the hunk cites, if the id exists
+   in the catalog, emit an `Anchor(via="explicit")`. If it does not exist, record
+   it under `unknown_refs` for that path.
+2. **Implicit pass.** *Only if the explicit pass produced no anchors*, test the
+   hunk's path against every requirement's globs. Each match emits an
