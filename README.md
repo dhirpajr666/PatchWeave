@@ -333,3 +333,16 @@ carries a reviewer.
 ---
 
 ## The review-queue scoring model
+
+Each review item receives a priority score in `[0, 100]`, a weighted blend of
+four normalized signals:
+
+| Signal    | Source                                                     | Intuition                                    |
+| --------- | ---------------------------------------------------------- | -------------------------------------------- |
+| `risk`    | requirement risk tier (or `elevated` for unanchored)       | critical paths demand attention              |
+| `surface` | hunk churn ÷ largest churn in the set                      | bigger changes carry more places to hide bugs |
+| `gap`     | 1.0 when unanchored or unreviewed, else 0.0                | governance gaps are the whole point          |
+| `blast`   | distinct requirements touched, capped at 3                 | cross-cutting edits ripple further           |
+
+Default weights are `risk=0.35, surface=0.20, gap=0.30, blast=0.15`, normalized
+before use. The bias toward `gap` and `risk` over `surface` is intentional: a
