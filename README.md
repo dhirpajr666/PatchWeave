@@ -374,3 +374,16 @@ no compiler exists it uses `python_metrics`, which is behaviorally identical, so
 the CLI never breaks on a machine without a toolchain. Force the pure path with
 `--pure` to compare, or to keep a build sandboxed.
 
+---
+
+## Output schemas
+
+### JSON brief (`patchweave/v1`)
+
+```json
+{
+  "schema": "patchweave/v1",
+  "session": "...",
+  "branch": "...",
+  "release": "...",
+  "surface": { "added": 357, "removed": 57, "churn": 414, "anchor_ratio": 0.7143 },
