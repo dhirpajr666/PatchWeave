@@ -387,3 +387,17 @@ the CLI never breaks on a machine without a toolchain. Force the pure path with
   "branch": "...",
   "release": "...",
   "surface": { "added": 357, "removed": 57, "churn": 414, "anchor_ratio": 0.7143 },
+  "gaps": {
+    "unanchored": ["src/util/hashing.py"],
+    "unmet_requirements": ["REQ-OBS-7"],
+    "partial_requirements": ["REQ-CHK-2"],
+    "unknown_refs": { "scripts/dev-seed.py": ["REQ-GONE-1"] }
+  },
+  "requirements": [ { "id": "...", "state": "reviewed", "supporting_paths": ["..."] } ],
+  "queue": [ { "path": "...", "score": 76.52, "risk": "critical", "flags": [] } ]
+}
+```
+
+### Metric object
+
+```json
