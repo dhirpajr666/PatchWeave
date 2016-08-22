@@ -360,3 +360,17 @@ Ties break on **path ascending**, so the queue is fully deterministic. See
 stdin and prints `key=value` metric lines on stdout:
 
 ```
+files=3
+added=17
+removed=2
+hunks=4
+largest_file=b/src/checkout/session.py
+largest_churn=10
+```
+
+The Python bridge (`patchweave/native.py`) locates a compiler, builds a cached
+binary next to the source, streams the diff through it, and parses the output. If
+no compiler exists it uses `python_metrics`, which is behaviorally identical, so
+the CLI never breaks on a machine without a toolchain. Force the pure path with
+`--pure` to compare, or to keep a build sandboxed.
+
