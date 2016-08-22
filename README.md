@@ -346,3 +346,17 @@ four normalized signals:
 
 Default weights are `risk=0.35, surface=0.20, gap=0.30, blast=0.15`, normalized
 before use. The bias toward `gap` and `risk` over `surface` is intentional: a
+tiny unanchored edit to a critical file outranks a large, well-anchored,
+already-reviewed refactor.
+
+Ties break on **path ascending**, so the queue is fully deterministic. See
+[DESIGN.md](DESIGN.md) for the rationale and worked numeric examples.
+
+---
+
+## The native metric engine
+
+`core/patch_metrics.cpp` is a portable C++17 filter that reads a unified diff on
+stdin and prints `key=value` metric lines on stdout:
+
+```
