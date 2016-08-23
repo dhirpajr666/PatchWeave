@@ -401,3 +401,17 @@ the CLI never breaks on a machine without a toolchain. Force the pure path with
 ### Metric object
 
 ```json
+{ "files": 3, "added": 17, "removed": 2, "hunks": 4,
+  "largest_file": "b/src/checkout/session.py", "largest_churn": 10 }
+```
+
+---
+
+## Operations and CI gating
+
+Wire `gaps` into your pipeline to block merges that leave governance debt:
+
+```yaml
+- name: PatchWeave gate
+  run: |
+    python -m patchweave gaps \
