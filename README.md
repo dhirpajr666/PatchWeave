@@ -415,3 +415,16 @@ Wire `gaps` into your pipeline to block merges that leave governance debt:
 - name: PatchWeave gate
   run: |
     python -m patchweave gaps \
+      --manifest artifacts/manifest.json \
+      --catalog  requirements/catalog.json \
+      --max-gaps 0
+```
+
+Exit codes:
+
+| Code | Meaning                                                 |
+| ---- | ------------------------------------------------------- |
+| `0`  | success (and gate passed if `--max-gaps` given)         |
+| `1`  | input error (bad JSON, missing file, native error)      |
+| `2`  | gate tripped — gaps exceeded `--max-gaps`               |
+
