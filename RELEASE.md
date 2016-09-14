@@ -2,3 +2,4 @@
 
 ## Release checklist
 1. Review fixture-backed command output and documentation examples.
+2. Run the compile targets for both language components.
