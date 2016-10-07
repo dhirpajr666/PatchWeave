@@ -7,3 +7,4 @@
 - [x] Release review brief generation
 
 ## Next horizons
+- [ ] Comparative scenario collections
