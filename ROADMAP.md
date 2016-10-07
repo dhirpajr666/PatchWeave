@@ -8,3 +8,4 @@
 
 ## Next horizons
 - [ ] Comparative scenario collections
+- [ ] Interactive report exploration
