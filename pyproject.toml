@@ -2,3 +2,4 @@
 name = "patchweave"
 version = "1.0.1"
 description = "Coding-Agent Change Review Lab"
+requires-python = ">=3.11"
