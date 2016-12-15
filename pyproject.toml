@@ -5,3 +5,4 @@ description = "Coding-Agent Change Review Lab"
 requires-python = ">=3.11"
 license = {text = "MIT"}
 
+[project.urls]
