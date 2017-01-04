@@ -10,3 +10,6 @@ queues that a reviewer can burn down deterministically.
 
 The package is dependency-free and uses only the Python standard library. A
 portable C++17 companion (``core/patch_metrics.cpp``) computes churn metrics over
+raw diff bodies and is invoked through the ``metrics`` CLI verb.
+
+Public surface
