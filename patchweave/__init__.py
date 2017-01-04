@@ -13,3 +13,6 @@ portable C++17 companion (``core/patch_metrics.cpp``) computes churn metrics ove
 raw diff bodies and is invoked through the ``metrics`` CLI verb.
 
 Public surface
+--------------
+- :func:`patchweave.model.load_manifest`
+- :func:`patchweave.model.load_catalog`
