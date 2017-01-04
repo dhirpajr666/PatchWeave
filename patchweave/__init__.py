@@ -7,3 +7,6 @@ the requirements that authorize it, flags unanchored edits (changes with no
 governing requirement), surfaces unreviewed requirements (requirements with no
 supporting change), quantifies the patch surface, and assembles focused review
 queues that a reviewer can burn down deterministically.
+
+The package is dependency-free and uses only the Python standard library. A
+portable C++17 companion (``core/patch_metrics.cpp``) computes churn metrics over
