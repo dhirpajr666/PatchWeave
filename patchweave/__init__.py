@@ -19,3 +19,6 @@ Public surface
 - :class:`patchweave.weave.Weaver`
 - :class:`patchweave.queue.QueueBuilder`
 - :func:`patchweave.brief.render_brief`
+"""
+
+from __future__ import annotations
