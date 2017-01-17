@@ -16,3 +16,6 @@ Public surface
 --------------
 - :func:`patchweave.model.load_manifest`
 - :func:`patchweave.model.load_catalog`
+- :class:`patchweave.weave.Weaver`
+- :class:`patchweave.queue.QueueBuilder`
+- :func:`patchweave.brief.render_brief`
