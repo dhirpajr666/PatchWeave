@@ -49,3 +49,13 @@ def _bar(fraction: float, width: int = 24) -> str:
 
 
 # --- terminal renderer ------------------------------------------------------
+
+def render_brief(report: WeaveReport, queue: Sequence[ReviewItem], color: bool = False) -> str:
+    lines: List[str] = []
+    title = f" PATCHWEAVE REVIEW BRIEF :: {report.session} "
+    lines.append(_c("=" * 60, "orange", enabled=color))
+    lines.append(_c(title, "bold", "orange", enabled=color))
+    lines.append(_c("=" * 60, "orange", enabled=color))
+    lines.append("")
+    lines.append(f"  branch   : {report.branch}")
+    lines.append(f"  release  : {report.release}")
