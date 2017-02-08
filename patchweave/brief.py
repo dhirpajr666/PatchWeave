@@ -38,3 +38,14 @@ _ANSI = {
 def _c(text: str, *styles: str, enabled: bool) -> str:
     if not enabled:
         return text
+    prefix = "".join(_ANSI[s] for s in styles if s in _ANSI)
+    return f"{prefix}{text}{_ANSI['reset']}"
+
+
+def _bar(fraction: float, width: int = 24) -> str:
+    fraction = max(0.0, min(1.0, fraction))
+    filled = int(round(fraction * width))
+    return "#" * filled + "-" * (width - filled)
+
+
+# --- terminal renderer ------------------------------------------------------
