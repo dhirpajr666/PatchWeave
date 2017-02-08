@@ -59,3 +59,14 @@ def render_brief(report: WeaveReport, queue: Sequence[ReviewItem], color: bool =
     lines.append("")
     lines.append(f"  branch   : {report.branch}")
     lines.append(f"  release  : {report.release}")
+    lines.append(
+        f"  surface  : +{report.total_added} / -{report.total_removed}"
+        f"  (churn {report.total_churn})"
+    )
+    ratio = report.anchor_ratio
+    lines.append(
+        f"  anchored : {ratio * 100:5.1f}%  [{_bar(ratio)}]"
+    )
+    lines.append("")
+
+    # Governance gaps
