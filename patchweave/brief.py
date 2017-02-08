@@ -16,3 +16,14 @@ from __future__ import annotations
 import json
 from typing import Dict, List, Sequence
 
+from . import PATCHWEAVE_SCHEMA
+from .queue import ReviewItem
+from .weave import WeaveReport
+
+
+# --- small ANSI helpers -----------------------------------------------------
+
+_ANSI = {
+    "reset": "\033[0m",
+    "bold": "\033[1m",
+    "orange": "\033[38;5;208m",
