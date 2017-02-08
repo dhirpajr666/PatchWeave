@@ -27,3 +27,14 @@ _ANSI = {
     "reset": "\033[0m",
     "bold": "\033[1m",
     "orange": "\033[38;5;208m",
+    "navy": "\033[38;5;24m",
+    "dim": "\033[2m",
+    "red": "\033[31m",
+    "green": "\033[32m",
+    "yellow": "\033[33m",
+}
+
+
+def _c(text: str, *styles: str, enabled: bool) -> str:
+    if not enabled:
+        return text
