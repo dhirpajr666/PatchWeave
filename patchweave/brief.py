@@ -70,3 +70,14 @@ def render_brief(report: WeaveReport, queue: Sequence[ReviewItem], color: bool =
     lines.append("")
 
     # Governance gaps
+    lines.append(_c("-- GOVERNANCE GAPS " + "-" * 41, "navy", enabled=color))
+    unmet = report.unmet()
+    partial = report.partial()
+    lines.append(f"  unanchored changes : {len(report.unanchored)}")
+    lines.append(f"  unmet requirements : {len(unmet)}")
+    lines.append(f"  partial (unreviewed): {len(partial)}")
+    if report.unknown_refs:
+        lines.append(
+            f"  unknown references : {sum(len(v) for v in report.unknown_refs.values())}"
+        )
+    lines.append("")
