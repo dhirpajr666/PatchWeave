@@ -81,3 +81,14 @@ def render_brief(report: WeaveReport, queue: Sequence[ReviewItem], color: bool =
             f"  unknown references : {sum(len(v) for v in report.unknown_refs.values())}"
         )
     lines.append("")
+
+    if unmet:
+        lines.append(_c("  Unmet requirements:", "yellow", enabled=color))
+        for status in unmet:
+            lines.append(
+                f"    - {status.requirement.id} [{status.requirement.risk}] "
+                f"{status.requirement.title}"
+            )
+        lines.append("")
+
+    # Risk histogram
