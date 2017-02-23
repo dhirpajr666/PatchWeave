@@ -92,3 +92,14 @@ def render_brief(report: WeaveReport, queue: Sequence[ReviewItem], color: bool =
         lines.append("")
 
     # Risk histogram
+    lines.append(_c("-- RISK DISTRIBUTION " + "-" * 39, "navy", enabled=color))
+    hist = report.risk_histogram()
+    peak = max(hist.values()) or 1
+    for tier, count in hist.items():
+        lines.append(f"  {tier:<9} {count:>3}  {_bar(count / peak, 20)}")
+    lines.append("")
+
+    # Review queue (top slice)
+    lines.append(_c("-- REVIEW QUEUE (top 12) " + "-" * 35, "navy", enabled=color))
+    if not queue:
+        lines.append("  (queue empty — nothing to review)")
