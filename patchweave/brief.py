@@ -103,3 +103,14 @@ def render_brief(report: WeaveReport, queue: Sequence[ReviewItem], color: bool =
     lines.append(_c("-- REVIEW QUEUE (top 12) " + "-" * 35, "navy", enabled=color))
     if not queue:
         lines.append("  (queue empty — nothing to review)")
+    for item in queue[:12]:
+        flag = ",".join(item.flags) if item.flags else "-"
+        lines.append(
+            f"  {item.score:6.2f}  {item.path:<34.34} "
+            f"[{item.risk:<10.10}] churn={item.churn:<4} {flag}"
+        )
+    lines.append("")
+    lines.append(_c("=" * 60, "orange", enabled=color))
+    return "\n".join(lines)
+
+
