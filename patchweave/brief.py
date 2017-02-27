@@ -114,3 +114,13 @@ def render_brief(report: WeaveReport, queue: Sequence[ReviewItem], color: bool =
     return "\n".join(lines)
 
 
+# --- markdown renderer ------------------------------------------------------
+
+def render_markdown(report: WeaveReport, queue: Sequence[ReviewItem]) -> str:
+    md: List[str] = []
+    md.append(f"# Review Brief — {report.session}")
+    md.append("")
+    md.append(f"- **Branch:** `{report.branch}`")
+    md.append(f"- **Release:** `{report.release}`")
+    md.append(f"- **Patch surface:** +{report.total_added} / -{report.total_removed} "
+              f"(churn {report.total_churn})")
