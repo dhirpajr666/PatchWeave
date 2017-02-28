@@ -135,3 +135,14 @@ def render_markdown(report: WeaveReport, queue: Sequence[ReviewItem]) -> str:
     md.append(f"| Partial (unreviewed) | {len(report.partial())} |")
     md.append(f"| Unknown references | {sum(len(v) for v in report.unknown_refs.values())} |")
     md.append("")
+    md.append("## Review Queue")
+    md.append("")
+    md.append("| # | Score | Path | Risk | Churn | Flags |")
+    md.append("| --- | --- | --- | --- | --- | --- |")
+    for i, item in enumerate(queue, start=1):
+        flag = ", ".join(item.flags) if item.flags else "—"
+        md.append(
+            f"| {i} | {item.score:.2f} | `{item.path}` | {item.risk} | "
+            f"{item.churn} | {flag} |"
+        )
+    md.append("")
