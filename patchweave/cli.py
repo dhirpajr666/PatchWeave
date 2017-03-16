@@ -52,3 +52,14 @@ def _build_queue(report, manifest, args) -> List:
             print("warning: --weights ignored (expected r,s,g,b floats)", file=sys.stderr)
     return QueueBuilder(report, weights).build(_churn_map(manifest))
 
+
+def cmd_weave(args) -> int:
+    manifest, catalog = _load_pair(args)
+    report = Weaver(manifest, catalog).weave()
+    queue = _build_queue(report, manifest, args)
+    print(render_brief(report, queue, color=args.color))
+    return 0
+
+
+def cmd_queue(args) -> int:
+    manifest, catalog = _load_pair(args)
