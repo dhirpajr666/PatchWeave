@@ -17,3 +17,15 @@ takes ``--diff``. Run ``patchweave <verb> --help`` for details.
 from __future__ import annotations
 
 import argparse
+import sys
+from typing import Dict, List, Optional
+
+from . import __version__
+from .brief import render_brief, render_json, render_markdown
+from .model import ManifestError, load_catalog, load_manifest
+from .native import DiffMetrics, NativeUnavailable, metrics as run_metrics
+from .queue import QueueBuilder, QueueWeights
+from .weave import Weaver
+
+
+def _churn_map(manifest) -> Dict[str, int]:
