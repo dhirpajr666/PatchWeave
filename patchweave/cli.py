@@ -40,3 +40,15 @@ def _load_pair(args) -> tuple:
     catalog = load_catalog(args.catalog)
     return manifest, catalog
 
+
+def _build_queue(report, manifest, args) -> List:
+    weights = QueueWeights()
+    if getattr(args, "weights", None):
+        try:
+            parts = [float(x) for x in args.weights.split(",")]
+            if len(parts) == 4:
+                weights = QueueWeights(*parts)
+        except ValueError:
+            print("warning: --weights ignored (expected r,s,g,b floats)", file=sys.stderr)
+    return QueueBuilder(report, weights).build(_churn_map(manifest))
+
