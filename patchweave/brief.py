@@ -146,3 +146,14 @@ def render_markdown(report: WeaveReport, queue: Sequence[ReviewItem]) -> str:
             f"{item.churn} | {flag} |"
         )
     md.append("")
+    return "\n".join(md)
+
+
+# --- json renderer ----------------------------------------------------------
+
+def render_json(report: WeaveReport, queue: Sequence[ReviewItem]) -> str:
+    payload: Dict[str, object] = {
+        "schema": PATCHWEAVE_SCHEMA,
+        "session": report.session,
+        "branch": report.branch,
+        "release": report.release,
