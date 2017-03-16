@@ -29,3 +29,14 @@ from .weave import Weaver
 
 
 def _churn_map(manifest) -> Dict[str, int]:
+    out: Dict[str, int] = {}
+    for h in manifest.hunks:
+        out[h.path] = out.get(h.path, 0) + h.churn
+    return out
+
+
+def _load_pair(args) -> tuple:
+    manifest = load_manifest(args.manifest)
+    catalog = load_catalog(args.catalog)
+    return manifest, catalog
+
