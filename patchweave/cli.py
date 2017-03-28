@@ -63,3 +63,15 @@ def cmd_weave(args) -> int:
 
 def cmd_queue(args) -> int:
     manifest, catalog = _load_pair(args)
+    report = Weaver(manifest, catalog).weave()
+    queue = _build_queue(report, manifest, args)
+    if args.format == "json":
+        import json
+
+        print(json.dumps([i.as_dict() for i in queue], indent=2))
+    else:
+        for i, item in enumerate(queue, start=1):
+            flag = ",".join(item.flags) if item.flags else "-"
+            print(f"{i:>3}. {item.score:6.2f}  {item.path}  "
+                  f"[{item.risk}] churn={item.churn} {flag}")
+    return 0
