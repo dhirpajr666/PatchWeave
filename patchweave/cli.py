@@ -75,3 +75,14 @@ def cmd_queue(args) -> int:
             print(f"{i:>3}. {item.score:6.2f}  {item.path}  "
                   f"[{item.risk}] churn={item.churn} {flag}")
     return 0
+
+
+def cmd_brief(args) -> int:
+    manifest, catalog = _load_pair(args)
+    report = Weaver(manifest, catalog).weave()
+    queue = _build_queue(report, manifest, args)
+    if args.format == "json":
+        print(render_json(report, queue))
+    elif args.format == "markdown":
+        print(render_markdown(report, queue))
+    else:
