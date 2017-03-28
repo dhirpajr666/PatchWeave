@@ -86,3 +86,14 @@ def cmd_brief(args) -> int:
     elif args.format == "markdown":
         print(render_markdown(report, queue))
     else:
+        print(render_brief(report, queue, color=args.color))
+    return 0
+
+
+def cmd_gaps(args) -> int:
+    manifest, catalog = _load_pair(args)
+    report = Weaver(manifest, catalog).weave()
+    unanchored = len(report.unanchored)
+    unmet = len(report.unmet())
+    unknown = sum(len(v) for v in report.unknown_refs.values())
+    print(f"unanchored={unanchored} unmet={unmet} unknown_refs={unknown} "
