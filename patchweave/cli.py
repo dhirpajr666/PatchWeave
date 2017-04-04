@@ -97,3 +97,15 @@ def cmd_gaps(args) -> int:
     unmet = len(report.unmet())
     unknown = sum(len(v) for v in report.unknown_refs.values())
     print(f"unanchored={unanchored} unmet={unmet} unknown_refs={unknown} "
+          f"anchor_ratio={report.anchor_ratio * 100:.1f}%")
+    for h in report.unanchored:
+        print(f"  UNANCHORED  {h.path}  churn={h.churn}")
+    for s in report.unmet():
+        print(f"  UNMET       {s.requirement.id}  [{s.requirement.risk}]  {s.requirement.title}")
+    for path, ids in report.unknown_refs.items():
+        print(f"  UNKNOWN-REF {path}  -> {', '.join(ids)}")
+
+    total_gaps = unanchored + unmet + unknown
+    if args.max_gaps is not None and total_gaps > args.max_gaps:
+        print(f"gate: {total_gaps} gaps exceed threshold {args.max_gaps}", file=sys.stderr)
+        return 2
