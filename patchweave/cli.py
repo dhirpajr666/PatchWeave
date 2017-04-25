@@ -120,3 +120,15 @@ def cmd_metrics(args) -> int:
         import json
 
         print(json.dumps(m.as_dict(), indent=2))
+    else:
+        print(f"files         : {m.files}")
+        print(f"hunks         : {m.hunks}")
+        print(f"added         : {m.added}")
+        print(f"removed       : {m.removed}")
+        print(f"largest_file  : {m.largest_file}")
+        print(f"largest_churn : {m.largest_churn}")
+    return 0
+
+
+def build_parser() -> argparse.ArgumentParser:
+    p = argparse.ArgumentParser(
