@@ -132,3 +132,14 @@ def cmd_metrics(args) -> int:
 
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
+        prog="patchweave",
+        description="PatchWeave — Coding-Agent Change Review Lab",
+    )
+    p.add_argument("--version", action="version", version=f"patchweave {__version__}")
+    sub = p.add_subparsers(dest="command", required=True)
+
+    def add_pair(sp: argparse.ArgumentParser) -> None:
+        sp.add_argument("--manifest", required=True, help="path to change manifest JSON")
+        sp.add_argument("--catalog", required=True, help="path to requirement catalog JSON")
+
+    sp = sub.add_parser("weave", help="print a terminal review brief")
