@@ -109,3 +109,14 @@ def cmd_gaps(args) -> int:
     if args.max_gaps is not None and total_gaps > args.max_gaps:
         print(f"gate: {total_gaps} gaps exceed threshold {args.max_gaps}", file=sys.stderr)
         return 2
+    return 0
+
+
+def cmd_metrics(args) -> int:
+    with open(args.diff, "r", encoding="utf-8") as fh:
+        diff_text = fh.read()
+    m: DiffMetrics = run_metrics(diff_text, prefer_native=not args.pure)
+    if args.format == "json":
+        import json
+
+        print(json.dumps(m.as_dict(), indent=2))
