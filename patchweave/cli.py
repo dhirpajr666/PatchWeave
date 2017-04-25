@@ -143,3 +143,15 @@ def build_parser() -> argparse.ArgumentParser:
         sp.add_argument("--catalog", required=True, help="path to requirement catalog JSON")
 
     sp = sub.add_parser("weave", help="print a terminal review brief")
+    add_pair(sp)
+    sp.add_argument("--color", action="store_true", help="enable ANSI colour")
+    sp.add_argument("--weights", help="queue weights as r,s,g,b floats")
+    sp.set_defaults(func=cmd_weave)
+
+    sp = sub.add_parser("queue", help="print the ranked review queue")
+    add_pair(sp)
+    sp.add_argument("--format", choices=["text", "json"], default="text")
+    sp.add_argument("--weights", help="queue weights as r,s,g,b floats")
+    sp.set_defaults(func=cmd_queue)
+
+    sp = sub.add_parser("brief", help="render a full brief")
