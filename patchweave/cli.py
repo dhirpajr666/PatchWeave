@@ -155,3 +155,14 @@ def build_parser() -> argparse.ArgumentParser:
     sp.set_defaults(func=cmd_queue)
 
     sp = sub.add_parser("brief", help="render a full brief")
+    add_pair(sp)
+    sp.add_argument("--format", choices=["text", "markdown", "json"], default="text")
+    sp.add_argument("--color", action="store_true")
+    sp.add_argument("--weights", help="queue weights as r,s,g,b floats")
+    sp.set_defaults(func=cmd_brief)
+
+    sp = sub.add_parser("gaps", help="print governance gaps (CI gate)")
+    add_pair(sp)
+    sp.add_argument("--max-gaps", type=int, default=None,
+                    help="exit non-zero when total gaps exceed this")
+    sp.set_defaults(func=cmd_gaps)
