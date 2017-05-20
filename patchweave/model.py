@@ -21,3 +21,16 @@ broken input never silently produces a misleading review brief.
 from __future__ import annotations
 
 import json
+import os
+from dataclasses import dataclass, field
+from fnmatch import fnmatch
+from typing import Any, Dict, Iterable, List, Optional, Sequence
+
+
+class ManifestError(ValueError):
+    """Raised when a manifest or catalog document is structurally invalid."""
+
+
+# Risk tiers, ordered from least to most severe. Used to rank review queues.
+RISK_ORDER = ("routine", "notable", "elevated", "critical")
+
