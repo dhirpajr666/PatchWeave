@@ -34,3 +34,16 @@ class ManifestError(ValueError):
 # Risk tiers, ordered from least to most severe. Used to rank review queues.
 RISK_ORDER = ("routine", "notable", "elevated", "critical")
 
+
+def _risk_rank(tier: str) -> int:
+    try:
+        return RISK_ORDER.index(tier)
+    except ValueError:
+        return -1
+
+
+@dataclass(frozen=True)
+class Hunk:
+    """A single file touched in a change set."""
+
+    path: str
