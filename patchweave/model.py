@@ -60,3 +60,16 @@ class Hunk:
 
     @property
     def net(self) -> int:
+        """Net line delta (added - removed)."""
+        return self.added - self.removed
+
+    @property
+    def anchored(self) -> bool:
+        """True when the hunk cites at least one requirement id."""
+        return len(self.requirements) > 0
+
+    @property
+    def reviewed(self) -> bool:
+        """True when a reviewer has been recorded for the hunk."""
+        return bool(self.reviewer)
+
