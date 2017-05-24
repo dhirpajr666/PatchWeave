@@ -47,3 +47,16 @@ class Hunk:
     """A single file touched in a change set."""
 
     path: str
+    added: int
+    removed: int
+    requirements: Sequence[str] = field(default_factory=tuple)
+    reviewer: Optional[str] = None
+    kind: str = "modify"  # one of: add, modify, delete, rename
+
+    @property
+    def churn(self) -> int:
+        """Total lines touched (added + removed)."""
+        return self.added + self.removed
+
+    @property
+    def net(self) -> int:
