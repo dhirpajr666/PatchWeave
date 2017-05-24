@@ -73,3 +73,16 @@ class Hunk:
         """True when a reviewer has been recorded for the hunk."""
         return bool(self.reviewer)
 
+
+@dataclass(frozen=True)
+class Requirement:
+    """A unit of intended work the change set is meant to satisfy."""
+
+    id: str
+    title: str
+    risk: str = "routine"
+    globs: Sequence[str] = field(default_factory=tuple)
+    owner: Optional[str] = None
+
+    @property
+    def risk_rank(self) -> int:
