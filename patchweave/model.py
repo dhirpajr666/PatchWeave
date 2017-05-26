@@ -99,3 +99,15 @@ class Manifest:
 
     session: str
     branch: str
+    hunks: List[Hunk]
+
+    @property
+    def total_churn(self) -> int:
+        return sum(h.churn for h in self.hunks)
+
+    def requirement_ids(self) -> set:
+        seen: set = set()
+        for h in self.hunks:
+            seen.update(h.requirements)
+        return seen
+
