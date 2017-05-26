@@ -86,3 +86,16 @@ class Requirement:
 
     @property
     def risk_rank(self) -> int:
+        return _risk_rank(self.risk)
+
+    def matches(self, path: str) -> bool:
+        """True when *path* satisfies one of this requirement's path globs."""
+        return any(fnmatch(path, g) for g in self.globs)
+
+
+@dataclass(frozen=True)
+class Manifest:
+    """A loaded, validated change manifest."""
+
+    session: str
+    branch: str
