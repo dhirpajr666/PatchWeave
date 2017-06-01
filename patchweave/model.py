@@ -137,3 +137,16 @@ def _as_int(value: Any, label: str) -> int:
 
 
 def parse_manifest(doc: Dict[str, Any]) -> Manifest:
+    """Validate and convert a raw manifest dict into a :class:`Manifest`."""
+
+    _require(isinstance(doc, dict), "manifest root must be an object")
+    session = str(doc.get("session", "unnamed-session"))
+    branch = str(doc.get("branch", "HEAD"))
+    raw_hunks = doc.get("changes", doc.get("hunks", []))
+    _require(isinstance(raw_hunks, list), "'changes' must be a list")
+
+    hunks: List[Hunk] = []
+    for i, entry in enumerate(raw_hunks):
+        _require(isinstance(entry, dict), f"change[{i}] must be an object")
+        path = entry.get("path")
+        _require(isinstance(path, str) and path, f"change[{i}].path is required")
