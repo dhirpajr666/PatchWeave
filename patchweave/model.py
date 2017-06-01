@@ -150,3 +150,16 @@ def parse_manifest(doc: Dict[str, Any]) -> Manifest:
         _require(isinstance(entry, dict), f"change[{i}] must be an object")
         path = entry.get("path")
         _require(isinstance(path, str) and path, f"change[{i}].path is required")
+        kind = str(entry.get("kind", "modify"))
+        _require(
+            kind in ("add", "modify", "delete", "rename"),
+            f"change[{i}].kind '{kind}' is invalid",
+        )
+        reqs = entry.get("requirements", [])
+        _require(isinstance(reqs, list), f"change[{i}].requirements must be a list")
+        reviewer = entry.get("reviewer")
+        if reviewer is not None:
+            reviewer = str(reviewer)
+        hunks.append(
+            Hunk(
+                path=path,
