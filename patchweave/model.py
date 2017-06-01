@@ -111,3 +111,16 @@ class Manifest:
             seen.update(h.requirements)
         return seen
 
+
+@dataclass(frozen=True)
+class Catalog:
+    """A loaded, validated requirement catalog."""
+
+    release: str
+    requirements: List[Requirement]
+
+    def by_id(self) -> Dict[str, Requirement]:
+        return {r.id: r for r in self.requirements}
+
+
+def _require(cond: bool, message: str) -> None:
