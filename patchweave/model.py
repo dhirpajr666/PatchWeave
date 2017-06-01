@@ -163,3 +163,16 @@ def parse_manifest(doc: Dict[str, Any]) -> Manifest:
         hunks.append(
             Hunk(
                 path=path,
+                added=_as_int(entry.get("added", 0), f"change[{i}].added"),
+                removed=_as_int(entry.get("removed", 0), f"change[{i}].removed"),
+                requirements=tuple(str(r) for r in reqs),
+                reviewer=reviewer,
+                kind=kind,
+            )
+        )
+    return Manifest(session=session, branch=branch, hunks=hunks)
+
+
+def parse_catalog(doc: Dict[str, Any]) -> Catalog:
+    """Validate and convert a raw catalog dict into a :class:`Catalog`."""
+
