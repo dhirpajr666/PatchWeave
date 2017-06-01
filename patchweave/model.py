@@ -189,3 +189,16 @@ def parse_catalog(doc: Dict[str, Any]) -> Catalog:
         _require(isinstance(rid, str) and rid, f"requirement[{i}].id is required")
         _require(rid not in seen_ids, f"duplicate requirement id '{rid}'")
         seen_ids.add(rid)
+        risk = str(entry.get("risk", "routine"))
+        _require(
+            _risk_rank(risk) >= 0,
+            f"requirement[{i}].risk '{risk}' is not a known tier",
+        )
+        globs = entry.get("globs", [])
+        _require(isinstance(globs, list), f"requirement[{i}].globs must be a list")
+        owner = entry.get("owner")
+        if owner is not None:
+            owner = str(owner)
+        reqs.append(
+            Requirement(
+                id=rid,
