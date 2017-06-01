@@ -124,3 +124,16 @@ class Catalog:
 
 
 def _require(cond: bool, message: str) -> None:
+    if not cond:
+        raise ManifestError(message)
+
+
+def _as_int(value: Any, label: str) -> int:
+    if isinstance(value, bool) or not isinstance(value, int):
+        raise ManifestError(f"{label} must be an integer, got {value!r}")
+    if value < 0:
+        raise ManifestError(f"{label} must be non-negative, got {value}")
+    return value
+
+
+def parse_manifest(doc: Dict[str, Any]) -> Manifest:
