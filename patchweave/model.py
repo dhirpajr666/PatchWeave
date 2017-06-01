@@ -176,3 +176,16 @@ def parse_manifest(doc: Dict[str, Any]) -> Manifest:
 def parse_catalog(doc: Dict[str, Any]) -> Catalog:
     """Validate and convert a raw catalog dict into a :class:`Catalog`."""
 
+    _require(isinstance(doc, dict), "catalog root must be an object")
+    release = str(doc.get("release", "unversioned"))
+    raw_reqs = doc.get("requirements", [])
+    _require(isinstance(raw_reqs, list), "'requirements' must be a list")
+
+    reqs: List[Requirement] = []
+    seen_ids: set = set()
+    for i, entry in enumerate(raw_reqs):
+        _require(isinstance(entry, dict), f"requirement[{i}] must be an object")
+        rid = entry.get("id")
+        _require(isinstance(rid, str) and rid, f"requirement[{i}].id is required")
+        _require(rid not in seen_ids, f"duplicate requirement id '{rid}'")
+        seen_ids.add(rid)
