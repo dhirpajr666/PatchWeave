@@ -15,3 +15,14 @@ from __future__ import annotations
 import os
 import shutil
 import subprocess
+import sys
+from dataclasses import dataclass
+from typing import Dict, List, Optional
+
+
+class NativeUnavailable(RuntimeError):
+    """Raised when no C++ toolchain is available to build the metric engine."""
+
+
+_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_SRC = os.path.join(_ROOT, "core", "patch_metrics.cpp")
