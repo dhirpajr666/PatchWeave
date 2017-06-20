@@ -38,3 +38,14 @@ class DiffMetrics:
     largest_file: str
     largest_churn: int
 
+    def as_dict(self) -> Dict[str, object]:
+        return {
+            "files": self.files,
+            "added": self.added,
+            "removed": self.removed,
+            "hunks": self.hunks,
+            "largest_file": self.largest_file,
+            "largest_churn": self.largest_churn,
+        }
+
+
