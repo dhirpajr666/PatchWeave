@@ -26,3 +26,15 @@ class NativeUnavailable(RuntimeError):
 
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 _SRC = os.path.join(_ROOT, "core", "patch_metrics.cpp")
+_BIN = os.path.join(_ROOT, "core", "patch_metrics.bin")
+
+
+@dataclass(frozen=True)
+class DiffMetrics:
+    files: int
+    added: int
+    removed: int
+    hunks: int
+    largest_file: str
+    largest_churn: int
+
