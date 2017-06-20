@@ -49,3 +49,14 @@ class DiffMetrics:
         }
 
 
+def _find_compiler() -> Optional[str]:
+    for candidate in ("g++", "clang++", "c++"):
+        path = shutil.which(candidate)
+        if path:
+            return path
+    return None
+
+
+def build_native(force: bool = False) -> str:
+    """Compile the C++ metric engine; return the binary path.
+
