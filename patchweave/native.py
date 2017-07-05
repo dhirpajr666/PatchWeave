@@ -60,3 +60,14 @@ def _find_compiler() -> Optional[str]:
 def build_native(force: bool = False) -> str:
     """Compile the C++ metric engine; return the binary path.
 
+    The binary is cached next to the source and only rebuilt when missing,
+    stale, or ``force`` is set.
+    """
+    compiler = _find_compiler()
+    if compiler is None:
+        raise NativeUnavailable("no C++ compiler (g++/clang++/c++) on PATH")
+    if not os.path.exists(_SRC):
+        raise NativeUnavailable(f"metric source missing: {_SRC}")
+
+    binary = _BIN + (".exe" if os.name == "nt" else "")
+    fresh = (
