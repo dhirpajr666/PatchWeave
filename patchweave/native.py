@@ -71,3 +71,14 @@ def build_native(force: bool = False) -> str:
 
     binary = _BIN + (".exe" if os.name == "nt" else "")
     fresh = (
+        not force
+        and os.path.exists(binary)
+        and os.path.getmtime(binary) >= os.path.getmtime(_SRC)
+    )
+    if fresh:
+        return binary
+
+    cmd = [compiler, "-std=c++17", "-O2", "-o", binary, _SRC]
+    proc = subprocess.run(cmd, capture_output=True, text=True)
+    if proc.returncode != 0:
+        raise NativeUnavailable(f"compile failed: {proc.stderr.strip()}")
