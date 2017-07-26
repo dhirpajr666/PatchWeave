@@ -82,3 +82,14 @@ def build_native(force: bool = False) -> str:
     proc = subprocess.run(cmd, capture_output=True, text=True)
     if proc.returncode != 0:
         raise NativeUnavailable(f"compile failed: {proc.stderr.strip()}")
+    return binary
+
+
+def native_metrics(diff_text: str) -> DiffMetrics:
+    """Run the compiled engine over *diff_text* and parse its output.
+
+    The engine emits ``key=value`` lines on stdout, one per metric.
+    """
+    binary = build_native()
+    proc = subprocess.run(
+        [binary], input=diff_text, capture_output=True, text=True
