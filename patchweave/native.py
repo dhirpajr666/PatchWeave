@@ -93,3 +93,15 @@ def native_metrics(diff_text: str) -> DiffMetrics:
     binary = build_native()
     proc = subprocess.run(
         [binary], input=diff_text, capture_output=True, text=True
+    )
+    if proc.returncode != 0:
+        raise NativeUnavailable(f"engine error: {proc.stderr.strip()}")
+    return _parse_kv(proc.stdout)
+
+
+def _parse_kv(text: str) -> DiffMetrics:
+    kv: Dict[str, str] = {}
+    for line in text.splitlines():
+        line = line.strip()
+        if not line or "=" not in line:
+            continue
