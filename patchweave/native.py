@@ -105,3 +105,14 @@ def _parse_kv(text: str) -> DiffMetrics:
         line = line.strip()
         if not line or "=" not in line:
             continue
+        key, _, value = line.partition("=")
+        kv[key.strip()] = value.strip()
+    return DiffMetrics(
+        files=int(kv.get("files", 0)),
+        added=int(kv.get("added", 0)),
+        removed=int(kv.get("removed", 0)),
+        hunks=int(kv.get("hunks", 0)),
+        largest_file=kv.get("largest_file", ""),
+        largest_churn=int(kv.get("largest_churn", 0)),
+    )
+
