@@ -127,3 +127,14 @@ def python_metrics(diff_text: str) -> DiffMetrics:
     files = 0
     added = 0
     removed = 0
+    hunks = 0
+    cur_file = ""
+    cur_churn = 0
+    largest_file = ""
+    largest_churn = 0
+
+    def _flush() -> None:
+        nonlocal largest_file, largest_churn
+        if cur_file and cur_churn > largest_churn:
+            largest_churn = cur_churn
+            largest_file = cur_file
