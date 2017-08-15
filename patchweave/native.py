@@ -116,3 +116,14 @@ def _parse_kv(text: str) -> DiffMetrics:
         largest_churn=int(kv.get("largest_churn", 0)),
     )
 
+
+def python_metrics(diff_text: str) -> DiffMetrics:
+    """Pure-Python fallback with identical semantics to the C++ engine.
+
+    Parses a unified-diff-ish body: ``+++ path`` opens a file, ``@@`` starts a
+    hunk, lines beginning with ``+`` count as added and ``-`` as removed
+    (excluding the ``+++``/``---`` headers).
+    """
+    files = 0
+    added = 0
+    removed = 0
