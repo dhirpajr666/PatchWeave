@@ -138,3 +138,14 @@ def python_metrics(diff_text: str) -> DiffMetrics:
         if cur_file and cur_churn > largest_churn:
             largest_churn = cur_churn
             largest_file = cur_file
+
+    for raw in diff_text.splitlines():
+        if raw.startswith("+++ "):
+            _flush()
+            files += 1
+            cur_file = raw[4:].strip()
+            cur_churn = 0
+        elif raw.startswith("--- "):
+            continue
+        elif raw.startswith("@@"):
+            hunks += 1
