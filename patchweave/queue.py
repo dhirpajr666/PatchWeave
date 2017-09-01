@@ -15,3 +15,12 @@ weighted blend of four normalized signals:
 - ``gap``     — whether the change is unanchored or its requirement is unreviewed
 - ``blast``   — number of distinct requirements the change touches
 
+The default weights favor governance gaps and risk over raw size, because a tiny
+unanchored edit to a critical path is more dangerous than a large, well-anchored,
+already-reviewed refactor. Weights are overridable via :class:`QueueWeights`.
+"""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from typing import Dict, List
