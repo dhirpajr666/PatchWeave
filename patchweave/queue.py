@@ -24,3 +24,13 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from typing import Dict, List
+
+from .model import RISK_ORDER
+from .weave import WeaveReport, anchor_index
+
+
+@dataclass(frozen=True)
+class QueueWeights:
+    risk: float = 0.35
+    surface: float = 0.20
+    gap: float = 0.30
