@@ -34,3 +34,13 @@ class QueueWeights:
     risk: float = 0.35
     surface: float = 0.20
     gap: float = 0.30
+    blast: float = 0.15
+
+    def normalized(self) -> "QueueWeights":
+        total = self.risk + self.surface + self.gap + self.blast
+        if total <= 0:
+            return QueueWeights()
+        return QueueWeights(
+            risk=self.risk / total,
+            surface=self.surface / total,
+            gap=self.gap / total,
