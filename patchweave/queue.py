@@ -44,3 +44,13 @@ class QueueWeights:
             risk=self.risk / total,
             surface=self.surface / total,
             gap=self.gap / total,
+            blast=self.blast / total,
+        )
+
+
+@dataclass(frozen=True)
+class ReviewItem:
+    path: str
+    score: float
+    risk: str
+    churn: int
