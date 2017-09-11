@@ -54,3 +54,13 @@ class ReviewItem:
     score: float
     risk: str
     churn: int
+    requirement_ids: List[str]
+    flags: List[str]  # e.g. ["unanchored"], ["unreviewed-req"], ["unknown-ref"]
+
+    def as_dict(self) -> Dict[str, object]:
+        return {
+            "path": self.path,
+            "score": round(self.score, 2),
+            "risk": self.risk,
+            "churn": self.churn,
+            "requirements": list(self.requirement_ids),
