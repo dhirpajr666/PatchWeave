@@ -84,3 +84,13 @@ class QueueBuilder:
 
     def _peak_churn(self) -> int:
         return max((c for c in self._churn.values()), default=1) or 1
+
+    def _risk_component(self, risk: str) -> float:
+        idx = RISK_ORDER.index(risk) if risk in RISK_ORDER else 0
+        return idx / (len(RISK_ORDER) - 1)
+
+    def build(self, manifest_churn: Dict[str, int] | None = None) -> List[ReviewItem]:
+        """Produce a stably-ordered review queue.
+
+        *manifest_churn* optionally supplies path -> churn for anchored hunks so
+        the surface component is accurate for every item, not only unanchored
