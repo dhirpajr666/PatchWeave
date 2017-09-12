@@ -74,3 +74,13 @@ class QueueBuilder:
     def __init__(self, report: WeaveReport, weights: QueueWeights | None = None) -> None:
         self.report = report
         self.weights = (weights or QueueWeights()).normalized()
+        self._index = anchor_index(report)
+        # Map path -> churn for surface normalization.
+        self._churn: Dict[str, int] = {}
+        for hunk in report.unanchored:
+            self._churn[hunk.path] = hunk.churn
+        # supporting hunks are not directly available; reconstruct churn via anchors
+        # requires the original manifest, so we accept churn only for what we know.
+
+    def _peak_churn(self) -> int:
+        return max((c for c in self._churn.values()), default=1) or 1
