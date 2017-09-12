@@ -64,3 +64,13 @@ class ReviewItem:
             "risk": self.risk,
             "churn": self.churn,
             "requirements": list(self.requirement_ids),
+            "flags": list(self.flags),
+        }
+
+
+class QueueBuilder:
+    """Build a ranked review queue from a weave report."""
+
+    def __init__(self, report: WeaveReport, weights: QueueWeights | None = None) -> None:
+        self.report = report
+        self.weights = (weights or QueueWeights()).normalized()
