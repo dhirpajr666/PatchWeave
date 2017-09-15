@@ -104,3 +104,13 @@ class QueueBuilder:
         w = self.weights
         items: List[ReviewItem] = []
 
+        # Unanchored hunks: maximum governance gap.
+        for hunk in self.report.unanchored:
+            flags = ["unanchored"]
+            if hunk.path in self.report.unknown_refs:
+                flags.append("unknown-ref")
+            surface = hunk.churn / peak
+            score = 100.0 * (
+                w.risk * self._risk_component("elevated")
+                + w.surface * surface
+                + w.gap * 1.0
