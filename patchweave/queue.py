@@ -94,3 +94,13 @@ class QueueBuilder:
 
         *manifest_churn* optionally supplies path -> churn for anchored hunks so
         the surface component is accurate for every item, not only unanchored
+        ones. The CLI passes this in from the loaded manifest.
+        """
+        churn_map = dict(self._churn)
+        if manifest_churn:
+            churn_map.update(manifest_churn)
+        peak = max((c for c in churn_map.values()), default=1) or 1
+
+        w = self.weights
+        items: List[ReviewItem] = []
+
