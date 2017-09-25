@@ -124,3 +124,13 @@ class QueueBuilder:
                     churn=hunk.churn,
                     requirement_ids=[],
                     flags=flags,
+                )
+            )
+
+        # Anchored paths grouped by requirement coverage.
+        seen_paths: set = set()
+        for status in self.report.statuses.values():
+            for path in status.supporting_paths:
+                if path in seen_paths:
+                    continue
+                seen_paths.add(path)
