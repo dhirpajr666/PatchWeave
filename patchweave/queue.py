@@ -134,3 +134,13 @@ class QueueBuilder:
                 if path in seen_paths:
                     continue
                 seen_paths.add(path)
+                reqs = [
+                    a.requirement_id
+                    for a in self.report.anchors
+                    if a.path == path
+                ]
+                flags: List[str] = []
+                if status.state == "partial":
+                    flags.append("unreviewed-req")
+                if path in self.report.unknown_refs:
+                    flags.append("unknown-ref")
