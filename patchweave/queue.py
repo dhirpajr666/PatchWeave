@@ -114,3 +114,13 @@ class QueueBuilder:
                 w.risk * self._risk_component("elevated")
                 + w.surface * surface
                 + w.gap * 1.0
+                + w.blast * 0.0
+            )
+            items.append(
+                ReviewItem(
+                    path=hunk.path,
+                    score=score,
+                    risk="unanchored",
+                    churn=hunk.churn,
+                    requirement_ids=[],
+                    flags=flags,
