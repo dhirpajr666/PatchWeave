@@ -16,3 +16,14 @@ Anchoring resolution
 --------------------
 A change is anchored to a requirement when *either* of these holds:
 
+- The change explicitly lists the requirement id in ``requirements`` (an
+  *explicit* anchor), or
+- The change's path matches one of the requirement's ``globs`` (an *implicit*
+  anchor).
+
+Explicit anchors always win and are reported with ``via="explicit"``. Implicit
+anchors are reported with ``via="glob"`` and only apply when no explicit anchor
+was declared. A change that satisfies neither is *unanchored*.
+"""
+
+from __future__ import annotations
