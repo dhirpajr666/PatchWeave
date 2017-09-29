@@ -27,3 +27,14 @@ was declared. A change that satisfies neither is *unanchored*.
 """
 
 from __future__ import annotations
+
+from dataclasses import dataclass, field
+from typing import Dict, List, Optional, Tuple
+
+from .model import Catalog, Hunk, Manifest, Requirement, RISK_ORDER
+
+
+@dataclass(frozen=True)
+class Anchor:
+    """A resolved link between a change (path) and a requirement id."""
+
