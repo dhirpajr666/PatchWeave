@@ -60,3 +60,14 @@ class RequirementStatus:
         return self.met and len(self.reviewed_paths) == len(self.supporting_paths)
 
     @property
+    def state(self) -> str:
+        if not self.met:
+            return "unmet"
+        if self.fully_reviewed:
+            return "reviewed"
+        return "partial"
+
+
+@dataclass
+class WeaveReport:
+    """The full analysis produced by :meth:`Weaver.weave`."""
