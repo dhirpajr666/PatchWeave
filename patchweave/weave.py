@@ -49,3 +49,14 @@ class RequirementStatus:
 
     requirement: Requirement
     supporting_paths: List[str] = field(default_factory=list)
+    reviewed_paths: List[str] = field(default_factory=list)
+
+    @property
+    def met(self) -> bool:
+        return len(self.supporting_paths) > 0
+
+    @property
+    def fully_reviewed(self) -> bool:
+        return self.met and len(self.reviewed_paths) == len(self.supporting_paths)
+
+    @property
