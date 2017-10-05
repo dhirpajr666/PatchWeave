@@ -38,3 +38,14 @@ from .model import Catalog, Hunk, Manifest, Requirement, RISK_ORDER
 class Anchor:
     """A resolved link between a change (path) and a requirement id."""
 
+    path: str
+    requirement_id: str
+    via: str  # "explicit" or "glob"
+
+
+@dataclass
+class RequirementStatus:
+    """Coverage roll-up for a single requirement."""
+
+    requirement: Requirement
+    supporting_paths: List[str] = field(default_factory=list)
