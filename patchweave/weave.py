@@ -82,3 +82,14 @@ class WeaveReport:
     total_added: int
     total_removed: int
 
+    @property
+    def total_churn(self) -> int:
+        return self.total_added + self.total_removed
+
+    @property
+    def anchor_ratio(self) -> float:
+        anchored_paths = {a.path for a in self.anchors}
+        touched = anchored_paths | {h.path for h in self.unanchored}
+        if not touched:
+            return 1.0
+        return len(anchored_paths) / len(touched)
