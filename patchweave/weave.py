@@ -104,3 +104,14 @@ class WeaveReport:
         hist = {tier: 0 for tier in RISK_ORDER}
         for status in self.statuses.values():
             hist[status.requirement.risk] += 1
+        return hist
+
+
+class Weaver:
+    """Resolve anchors and compute requirement coverage."""
+
+    def __init__(self, manifest: Manifest, catalog: Catalog) -> None:
+        self.manifest = manifest
+        self.catalog = catalog
+        self._by_id = catalog.by_id()
+
