@@ -71,3 +71,14 @@ class RequirementStatus:
 @dataclass
 class WeaveReport:
     """The full analysis produced by :meth:`Weaver.weave`."""
+
+    session: str
+    branch: str
+    release: str
+    anchors: List[Anchor]
+    unanchored: List[Hunk]
+    unknown_refs: Dict[str, List[str]]  # path -> unknown requirement ids
+    statuses: Dict[str, RequirementStatus]
+    total_added: int
+    total_removed: int
+
