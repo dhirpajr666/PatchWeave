@@ -93,3 +93,14 @@ class WeaveReport:
         if not touched:
             return 1.0
         return len(anchored_paths) / len(touched)
+
+    def unmet(self) -> List[RequirementStatus]:
+        return [s for s in self.statuses.values() if not s.met]
+
+    def partial(self) -> List[RequirementStatus]:
+        return [s for s in self.statuses.values() if s.state == "partial"]
+
+    def risk_histogram(self) -> Dict[str, int]:
+        hist = {tier: 0 for tier in RISK_ORDER}
+        for status in self.statuses.values():
+            hist[status.requirement.risk] += 1
