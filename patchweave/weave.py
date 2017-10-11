@@ -115,3 +115,14 @@ class Weaver:
         self.catalog = catalog
         self._by_id = catalog.by_id()
 
+    def _resolve_hunk(self, hunk: Hunk) -> Tuple[List[Anchor], List[str]]:
+        """Return (anchors, unknown_ids) for a single hunk."""
+        anchors: List[Anchor] = []
+        unknown: List[str] = []
+
+        # Explicit anchors take priority.
+        for rid in hunk.requirements:
+            if rid in self._by_id:
+                anchors.append(Anchor(hunk.path, rid, "explicit"))
+            else:
+                unknown.append(rid)
