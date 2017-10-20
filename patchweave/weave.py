@@ -126,3 +126,14 @@ class Weaver:
                 anchors.append(Anchor(hunk.path, rid, "explicit"))
             else:
                 unknown.append(rid)
+
+        # Implicit (glob) anchors only when no explicit anchor resolved.
+        if not anchors:
+            for req in self.catalog.requirements:
+                if req.matches(hunk.path):
+                    anchors.append(Anchor(hunk.path, req.id, "glob"))
+
+        return anchors, unknown
+
+    def weave(self) -> WeaveReport:
+        anchors: List[Anchor] = []
