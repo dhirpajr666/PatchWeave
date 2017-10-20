@@ -137,3 +137,14 @@ class Weaver:
 
     def weave(self) -> WeaveReport:
         anchors: List[Anchor] = []
+        unanchored: List[Hunk] = []
+        unknown_refs: Dict[str, List[str]] = {}
+        statuses: Dict[str, RequirementStatus] = {
+            r.id: RequirementStatus(requirement=r) for r in self.catalog.requirements
+        }
+
+        total_added = 0
+        total_removed = 0
+
+        for hunk in self.manifest.hunks:
+            total_added += hunk.added
