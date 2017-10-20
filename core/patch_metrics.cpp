@@ -1,0 +1,10 @@
+// patch_metrics.cpp — PatchWeave native diff metric engine.
+//
+// A dependency-free, portable C++17 filter. It reads a unified-diff-style body
+// from standard input and emits a set of `key=value` metric lines on standard
+// output, which the Python bridge (patchweave/native.py) parses.
+//
+// Grammar recognised (lenient — unknown lines are ignored):
+//   "+++ <path>"   opens a new file, resets its per-file churn counter
+//   "--- <path>"   old-file header, ignored for counting
+//   "@@ ... @@"    opens a hunk
