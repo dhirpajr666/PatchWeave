@@ -8,3 +8,11 @@
 //   "+++ <path>"   opens a new file, resets its per-file churn counter
 //   "--- <path>"   old-file header, ignored for counting
 //   "@@ ... @@"    opens a hunk
+//   "+<text>"      an added line (excluding the "+++" header)
+//   "-<text>"      a removed line (excluding the "---" header)
+//
+// Output keys: files, added, removed, hunks, largest_file, largest_churn.
+//
+// Build (syntax-only):
+//   g++ -std=c++17 -Wall -Wextra -pedantic -fsyntax-only core/patch_metrics.cpp
+// Build (binary):
