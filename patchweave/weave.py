@@ -148,3 +148,14 @@ class Weaver:
 
         for hunk in self.manifest.hunks:
             total_added += hunk.added
+            total_removed += hunk.removed
+
+            hunk_anchors, unknown = self._resolve_hunk(hunk)
+            if unknown:
+                unknown_refs[hunk.path] = unknown
+
+            if not hunk_anchors:
+                unanchored.append(hunk)
+                continue
+
+            anchors.extend(hunk_anchors)
