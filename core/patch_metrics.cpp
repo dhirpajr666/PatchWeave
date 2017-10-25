@@ -16,3 +16,11 @@
 // Build (syntax-only):
 //   g++ -std=c++17 -Wall -Wextra -pedantic -fsyntax-only core/patch_metrics.cpp
 // Build (binary):
+//   g++ -std=c++17 -O2 -o core/patch_metrics.bin core/patch_metrics.cpp
+
+#include <iostream>
+#include <string>
+#include <cstdint>
+
+namespace patchweave {
+
