@@ -24,3 +24,11 @@
 
 namespace patchweave {
 
+// Accumulates diff statistics as lines are fed in one at a time.
+class MetricAccumulator {
+public:
+    void feed(const std::string& line) {
+        if (starts_with(line, "+++ ")) {
+            flush_file();
+            ++files_;
+            current_file_ = trim(line.substr(4));
