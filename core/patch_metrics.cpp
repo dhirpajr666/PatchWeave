@@ -49,3 +49,11 @@ public:
 
     void finish() { flush_file(); }
 
+    void emit(std::ostream& out) const {
+        out << "files=" << files_ << '\n';
+        out << "added=" << added_ << '\n';
+        out << "removed=" << removed_ << '\n';
+        out << "hunks=" << hunks_ << '\n';
+        out << "largest_file=" << largest_file_ << '\n';
+        out << "largest_churn=" << largest_churn_ << '\n';
+    }
