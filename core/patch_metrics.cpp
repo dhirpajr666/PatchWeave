@@ -73,3 +73,11 @@ private:
     }
 
     static bool is_space(char c) {
+        return c == ' ' || c == '\t' || c == '\r' || c == '\n';
+    }
+
+    void flush_file() {
+        if (!current_file_.empty() && current_churn_ > largest_churn_) {
+            largest_churn_ = current_churn_;
+            largest_file_ = current_file_;
+        }
