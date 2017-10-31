@@ -32,3 +32,12 @@ public:
             flush_file();
             ++files_;
             current_file_ = trim(line.substr(4));
+            current_churn_ = 0;
+        } else if (starts_with(line, "--- ")) {
+            // old-file header: ignored for churn accounting
+            return;
+        } else if (starts_with(line, "@@")) {
+            ++hunks_;
+        } else if (!line.empty() && line[0] == '+') {
+            ++added_;
+            ++current_churn_;
