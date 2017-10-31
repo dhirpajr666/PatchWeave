@@ -65,3 +65,11 @@ private:
     }
 
     static std::string trim(const std::string& s) {
+        std::size_t begin = 0;
+        std::size_t end = s.size();
+        while (begin < end && is_space(s[begin])) ++begin;
+        while (end > begin && is_space(s[end - 1])) --end;
+        return s.substr(begin, end - begin);
+    }
+
+    static bool is_space(char c) {
