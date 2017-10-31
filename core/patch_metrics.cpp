@@ -41,3 +41,11 @@ public:
         } else if (!line.empty() && line[0] == '+') {
             ++added_;
             ++current_churn_;
+        } else if (!line.empty() && line[0] == '-') {
+            ++removed_;
+            ++current_churn_;
+        }
+    }
+
+    void finish() { flush_file(); }
+
