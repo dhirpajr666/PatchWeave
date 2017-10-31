@@ -57,3 +57,11 @@ public:
         out << "largest_file=" << largest_file_ << '\n';
         out << "largest_churn=" << largest_churn_ << '\n';
     }
+
+private:
+    static bool starts_with(const std::string& s, const char* prefix) {
+        const std::string p(prefix);
+        return s.size() >= p.size() && s.compare(0, p.size(), p) == 0;
+    }
+
+    static std::string trim(const std::string& s) {
