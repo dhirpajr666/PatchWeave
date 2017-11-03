@@ -81,3 +81,11 @@ private:
             largest_churn_ = current_churn_;
             largest_file_ = current_file_;
         }
+    }
+
+    std::uint64_t files_ = 0;
+    std::uint64_t added_ = 0;
+    std::uint64_t removed_ = 0;
+    std::uint64_t hunks_ = 0;
+    std::uint64_t current_churn_ = 0;
+    std::uint64_t largest_churn_ = 0;
