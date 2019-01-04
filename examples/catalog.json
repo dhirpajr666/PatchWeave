@@ -7,3 +7,8 @@
       "risk": "critical",
       "owner": "dana",
       "globs": ["src/checkout/*.py"]
+    },
+    {
+      "id": "REQ-CHK-2",
+      "title": "Retry storms must not double-charge a customer",
+      "risk": "critical",
