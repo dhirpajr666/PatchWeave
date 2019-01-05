@@ -18,3 +18,8 @@
     {
       "id": "REQ-PAY-9",
       "title": "Ledger writes are append-only and monotonically versioned",
+      "risk": "elevated",
+      "owner": "omar",
+      "globs": ["src/payments/ledger.py"]
+    },
+    {
