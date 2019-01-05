@@ -12,3 +12,9 @@
       "id": "REQ-CHK-2",
       "title": "Retry storms must not double-charge a customer",
       "risk": "critical",
+      "owner": "dana",
+      "globs": ["src/checkout/retry.py", "src/payments/*.py"]
+    },
+    {
+      "id": "REQ-PAY-9",
+      "title": "Ledger writes are append-only and monotonically versioned",
