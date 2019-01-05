@@ -23,3 +23,9 @@
       "globs": ["src/payments/ledger.py"]
     },
     {
+      "id": "REQ-DOC-4",
+      "title": "Checkout flow documentation reflects the idempotency contract",
+      "risk": "routine",
+      "owner": "lin",
+      "globs": ["docs/*.md"]
+    },
