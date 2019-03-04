@@ -89,3 +89,18 @@ private:
     std::uint64_t hunks_ = 0;
     std::uint64_t current_churn_ = 0;
     std::uint64_t largest_churn_ = 0;
+    std::string current_file_;
+    std::string largest_file_;
+};
+
+}  // namespace patchweave
+
+int main() {
+    std::ios::sync_with_stdio(false);
+    patchweave::MetricAccumulator acc;
+    std::string line;
+    while (std::getline(std::cin, line)) {
+        acc.feed(line);
+    }
+    acc.finish();
+    acc.emit(std::cout);
