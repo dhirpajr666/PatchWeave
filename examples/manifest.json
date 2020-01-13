@@ -1,0 +1,5 @@
+{
+  "session": "agent-2026-09-01-checkout-refactor",
+  "branch": "feat/checkout-idempotency",
+  "changes": [
+    {
