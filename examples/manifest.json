@@ -3,3 +3,10 @@
   "branch": "feat/checkout-idempotency",
   "changes": [
     {
+      "path": "src/checkout/session.py",
+      "kind": "modify",
+      "added": 84,
+      "removed": 22,
+      "requirements": ["REQ-CHK-1"],
+      "reviewer": "dana"
+    },
