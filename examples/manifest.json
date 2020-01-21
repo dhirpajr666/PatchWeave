@@ -10,3 +10,10 @@
       "requirements": ["REQ-CHK-1"],
       "reviewer": "dana"
     },
+    {
+      "path": "src/checkout/idempotency.py",
+      "kind": "add",
+      "added": 141,
+      "removed": 0,
+      "requirements": ["REQ-CHK-1", "REQ-CHK-2"],
+      "reviewer": "dana"
