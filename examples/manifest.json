@@ -31,3 +31,10 @@
       "added": 12,
       "removed": 4,
       "requirements": ["REQ-PAY-9"],
+      "reviewer": "omar"
+    },
+    {
+      "path": "src/util/hashing.py",
+      "kind": "modify",
+      "added": 19,
+      "removed": 3,
