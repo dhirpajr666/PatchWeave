@@ -17,3 +17,10 @@
       "removed": 0,
       "requirements": ["REQ-CHK-1", "REQ-CHK-2"],
       "reviewer": "dana"
+    },
+    {
+      "path": "src/checkout/retry.py",
+      "kind": "modify",
+      "added": 37,
+      "removed": 9,
+      "requirements": ["REQ-CHK-2"]
