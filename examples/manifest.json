@@ -24,3 +24,10 @@
       "added": 37,
       "removed": 9,
       "requirements": ["REQ-CHK-2"]
+    },
+    {
+      "path": "src/payments/ledger.py",
+      "kind": "modify",
+      "added": 12,
+      "removed": 4,
+      "requirements": ["REQ-PAY-9"],
