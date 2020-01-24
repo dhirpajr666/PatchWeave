@@ -38,3 +38,10 @@
       "kind": "modify",
       "added": 19,
       "removed": 3,
+      "requirements": []
+    },
+    {
+      "path": "scripts/dev-seed.py",
+      "kind": "modify",
+      "added": 8,
+      "removed": 8,
