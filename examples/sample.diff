@@ -1,2 +1,6 @@
 --- a/src/checkout/session.py
 +++ b/src/checkout/session.py
+@@ -12,7 +12,9 @@ class CheckoutSession:
+-        self.token = token
++        self.token = token
++        self.idempotency_key = idempotency_key
