@@ -8,3 +8,7 @@
 @@ -40,3 +42,8 @@ class CheckoutSession:
 +    def commit(self):
 +        if self._committed:
++            return self._result
++        self._result = self._charge()
++        self._committed = True
++        return self._result
