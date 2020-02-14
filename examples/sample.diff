@@ -16,3 +16,7 @@
 +++ b/src/checkout/idempotency.py
 @@ -0,0 +1,6 @@
 +def make_key(customer_id, cart_hash):
++    return f"{customer_id}:{cart_hash}"
++
++def is_replay(store, key):
++    return key in store
