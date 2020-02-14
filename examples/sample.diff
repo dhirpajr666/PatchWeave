@@ -12,3 +12,7 @@
 +        self._result = self._charge()
 +        self._committed = True
 +        return self._result
+--- a/src/checkout/idempotency.py
++++ b/src/checkout/idempotency.py
+@@ -0,0 +1,6 @@
++def make_key(customer_id, cart_hash):
