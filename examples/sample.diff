@@ -4,3 +4,7 @@
 -        self.token = token
 +        self.token = token
 +        self.idempotency_key = idempotency_key
++        self._committed = False
+@@ -40,3 +42,8 @@ class CheckoutSession:
++    def commit(self):
++        if self._committed:
