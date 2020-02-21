@@ -15,3 +15,9 @@
       <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
   </defs>
+
+  <rect width="900" height="300" fill="url(#pwNavy)"/>
+
+  <!-- warp threads (requirements) : vertical navy-highlight lines -->
+  <g stroke="#1d3a63" stroke-width="2">
+    <line x1="120" y1="40" x2="120" y2="260"/>
