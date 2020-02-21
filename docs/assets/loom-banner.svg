@@ -21,3 +21,9 @@
   <!-- warp threads (requirements) : vertical navy-highlight lines -->
   <g stroke="#1d3a63" stroke-width="2">
     <line x1="120" y1="40" x2="120" y2="260"/>
+    <line x1="220" y1="40" x2="220" y2="260"/>
+    <line x1="320" y1="40" x2="320" y2="260"/>
+    <line x1="420" y1="40" x2="420" y2="260"/>
+    <line x1="520" y1="40" x2="520" y2="260"/>
+    <line x1="620" y1="40" x2="620" y2="260"/>
+    <line x1="720" y1="40" x2="720" y2="260"/>
