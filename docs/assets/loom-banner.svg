@@ -33,3 +33,9 @@
   <g stroke="url(#pwWarp)" stroke-width="3" fill="none" filter="url(#pwGlow)">
     <line x1="80" y1="80" x2="80" y2="80">
       <animate attributeName="x2" from="80" to="760" dur="2.4s" begin="0s" repeatCount="indefinite"/>
+    </line>
+    <line x1="80" y1="130" x2="80" y2="130">
+      <animate attributeName="x2" from="80" to="760" dur="2.4s" begin="0.4s" repeatCount="indefinite"/>
+    </line>
+    <line x1="80" y1="180" x2="80" y2="180">
+      <animate attributeName="x2" from="80" to="760" dur="2.4s" begin="0.8s" repeatCount="indefinite"/>
