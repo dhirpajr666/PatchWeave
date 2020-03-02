@@ -27,3 +27,9 @@
     <line x1="520" y1="40" x2="520" y2="260"/>
     <line x1="620" y1="40" x2="620" y2="260"/>
     <line x1="720" y1="40" x2="720" y2="260"/>
+  </g>
+
+  <!-- weft threads (changes) : horizontal electric-orange lines drawn across the loom -->
+  <g stroke="url(#pwWarp)" stroke-width="3" fill="none" filter="url(#pwGlow)">
+    <line x1="80" y1="80" x2="80" y2="80">
+      <animate attributeName="x2" from="80" to="760" dur="2.4s" begin="0s" repeatCount="indefinite"/>
