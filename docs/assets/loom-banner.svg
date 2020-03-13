@@ -39,3 +39,9 @@
     </line>
     <line x1="80" y1="180" x2="80" y2="180">
       <animate attributeName="x2" from="80" to="760" dur="2.4s" begin="0.8s" repeatCount="indefinite"/>
+    </line>
+    <line x1="80" y1="230" x2="80" y2="230">
+      <animate attributeName="x2" from="80" to="760" dur="2.4s" begin="1.2s" repeatCount="indefinite"/>
+    </line>
+  </g>
+
