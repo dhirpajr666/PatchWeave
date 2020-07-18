@@ -144,3 +144,26 @@ class QueueBuilder:
                     flags.append("unreviewed-req")
                 if path in self.report.unknown_refs:
                     flags.append("unknown-ref")
+                churn = churn_map.get(path, 0)
+                surface = churn / peak
+                gap = 1.0 if status.state != "reviewed" else 0.0
+                blast = min(len(reqs) / 3.0, 1.0)
+                score = 100.0 * (
+                    w.risk * self._risk_component(status.requirement.risk)
+                    + w.surface * surface
+                    + w.gap * gap
+                    + w.blast * blast
+                )
+                items.append(
+                    ReviewItem(
+                        path=path,
+                        score=score,
+                        risk=status.requirement.risk,
+                        churn=churn,
+                        requirement_ids=sorted(set(reqs)),
+                        flags=flags,
+                    )
+                )
+
+        # Deterministic ordering: score desc, then path asc for stable ties.
+        items.sort(key=lambda it: (-it.score, it.path))
