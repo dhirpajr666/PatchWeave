@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" width="900" height="360" role="img" aria-label="PatchWeave pipeline">
+  <title>PatchWeave: analysis pipeline</title>
+  <defs>
+    <linearGradient id="pwBg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#08182e"/>
+      <stop offset="1" stop-color="#0d233f"/>
+    </linearGradient>
