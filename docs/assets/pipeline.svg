@@ -5,3 +5,10 @@
       <stop offset="0" stop-color="#08182e"/>
       <stop offset="1" stop-color="#0d233f"/>
     </linearGradient>
+    <marker id="pwArrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#ff8a2a"/>
+    </marker>
+    <style>
+      .stage { fill:#102a4d; stroke:#ff7a18; stroke-width:2; rx:10; }
+      .label { font-family:Consolas, monospace; font-size:14px; fill:#e8f0ff; }
+      .sub   { font-family:Consolas, monospace; font-size:11px; fill:#7fb2ff; }
