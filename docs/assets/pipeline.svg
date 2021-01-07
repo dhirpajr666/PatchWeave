@@ -45,3 +45,10 @@
     <line x1="580" y1="125" x2="628" y2="125"/>
   </g>
 
+  <!-- travelling packets show data moving through the pipeline -->
+  <circle r="5" fill="#ffd7a8">
+    <animate attributeName="cx" values="180;228;380;428;580;628" dur="3.2s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="125;125;125;125;125;125" dur="3.2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;1;1;1;1;0" dur="3.2s" repeatCount="indefinite"/>
+  </circle>
+
