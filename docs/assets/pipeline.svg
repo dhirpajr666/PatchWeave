@@ -39,3 +39,9 @@
   </g>
 
   <!-- flow arrows -->
+  <g class="flow" marker-end="url(#pwArrow)">
+    <line x1="180" y1="125" x2="228" y2="125"/>
+    <line x1="380" y1="125" x2="428" y2="125"/>
+    <line x1="580" y1="125" x2="628" y2="125"/>
+  </g>
+
