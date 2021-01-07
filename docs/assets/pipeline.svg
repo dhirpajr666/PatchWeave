@@ -18,3 +18,10 @@
 
   <rect width="900" height="360" fill="url(#pwBg2)"/>
   <text x="30" y="40" class="label" font-size="20" fill="#ff9a3c">PatchWeave pipeline</text>
+
+  <!-- stages -->
+  <g>
+    <rect class="stage" x="30"  y="90" width="150" height="70" rx="10"/>
+    <text x="105" y="120" text-anchor="middle" class="label">load</text>
+    <text x="105" y="140" text-anchor="middle" class="sub">manifest+catalog</text>
+
