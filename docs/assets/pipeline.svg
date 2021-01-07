@@ -12,3 +12,9 @@
       .stage { fill:#102a4d; stroke:#ff7a18; stroke-width:2; rx:10; }
       .label { font-family:Consolas, monospace; font-size:14px; fill:#e8f0ff; }
       .sub   { font-family:Consolas, monospace; font-size:11px; fill:#7fb2ff; }
+      .flow  { stroke:#ff8a2a; stroke-width:2.5; fill:none; }
+    </style>
+  </defs>
+
+  <rect width="900" height="360" fill="url(#pwBg2)"/>
+  <text x="30" y="40" class="label" font-size="20" fill="#ff9a3c">PatchWeave pipeline</text>
