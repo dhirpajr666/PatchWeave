@@ -32,3 +32,10 @@
     <rect class="stage" x="430" y="90" width="150" height="70" rx="10"/>
     <text x="505" y="120" text-anchor="middle" class="label">score</text>
     <text x="505" y="140" text-anchor="middle" class="sub">risk·gap·surface</text>
+
+    <rect class="stage" x="630" y="90" width="150" height="70" rx="10"/>
+    <text x="705" y="120" text-anchor="middle" class="label">brief</text>
+    <text x="705" y="140" text-anchor="middle" class="sub">queue+report</text>
+  </g>
+
+  <!-- flow arrows -->
