@@ -52,3 +52,10 @@
     <animate attributeName="opacity" values="0;1;1;1;1;0" dur="3.2s" repeatCount="indefinite"/>
   </circle>
 
+  <!-- native metric side-branch -->
+  <rect class="stage" x="430" y="230" width="150" height="60" rx="10" stroke="#7fb2ff"/>
+  <text x="505" y="256" text-anchor="middle" class="label">metrics</text>
+  <text x="505" y="275" text-anchor="middle" class="sub">C++17 engine</text>
+  <path class="flow" d="M505,160 L505,228" marker-end="url(#pwArrow)" stroke="#7fb2ff" stroke-dasharray="5 4">
+    <animate attributeName="stroke-dashoffset" from="18" to="0" dur="0.9s" repeatCount="indefinite"/>
+  </path>
