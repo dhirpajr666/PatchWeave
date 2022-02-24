@@ -6,3 +6,5 @@ on:
 
 jobs:
   compile:
+    runs-on: ubuntu-latest
+    steps:
