@@ -9,3 +9,6 @@
 ## Next horizons
 - [ ] Comparative scenario collections
 - [ ] Interactive report exploration
+- [ ] Pluggable policy and metric packs
+- [ ] Release automation and versioned report archives
+
