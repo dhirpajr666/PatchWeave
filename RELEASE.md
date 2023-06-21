@@ -8,3 +8,5 @@
 5. Publish concise upgrade notes when data contracts or report fields evolve.
 
 ## Versioning
+The project uses semantic versioning. Report schema additions are additive; contract changes are described in release notes with migration examples.
+
