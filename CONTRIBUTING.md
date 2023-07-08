@@ -9,3 +9,5 @@ Contributions are most effective when they begin with a small fixture that demon
 4. Describe the motivation, data shape and report impact in the pull request.
 
 ## Review focus
+Reviewers look for clear domain modeling, deterministic calculations, useful diagnostics and examples that reflect proposed behavior.
+
