@@ -157,3 +157,27 @@ def render_json(report: WeaveReport, queue: Sequence[ReviewItem]) -> str:
         "session": report.session,
         "branch": report.branch,
         "release": report.release,
+        "surface": {
+            "added": report.total_added,
+            "removed": report.total_removed,
+            "churn": report.total_churn,
+            "anchor_ratio": round(report.anchor_ratio, 4),
+        },
+        "gaps": {
+            "unanchored": [h.path for h in report.unanchored],
+            "unmet_requirements": [s.requirement.id for s in report.unmet()],
+            "partial_requirements": [s.requirement.id for s in report.partial()],
+            "unknown_refs": report.unknown_refs,
+        },
+        "requirements": [
+            {
+                "id": s.requirement.id,
+                "title": s.requirement.title,
+                "risk": s.requirement.risk,
+                "state": s.state,
+                "supporting_paths": s.supporting_paths,
+                "reviewed_paths": s.reviewed_paths,
+            }
+            for s in report.statuses.values()
+        ],
+        "queue": [item.as_dict() for item in queue],
