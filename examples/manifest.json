@@ -45,3 +45,15 @@
       "kind": "modify",
       "added": 8,
       "removed": 8,
+      "requirements": ["REQ-GONE-1"]
+    },
+    {
+      "path": "docs/checkout.md",
+      "kind": "modify",
+      "added": 56,
+      "removed": 11,
+      "requirements": ["REQ-DOC-4"],
+      "reviewer": "lin"
+    }
+  ]
+}
