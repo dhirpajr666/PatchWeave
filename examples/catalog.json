@@ -29,3 +29,12 @@
       "owner": "lin",
       "globs": ["docs/*.md"]
     },
+    {
+      "id": "REQ-OBS-7",
+      "title": "Idempotency-key collisions emit a structured warning metric",
+      "risk": "notable",
+      "owner": "priya",
+      "globs": ["src/observability/*.py"]
+    }
+  ]
+}
