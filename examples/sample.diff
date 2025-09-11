@@ -20,3 +20,10 @@
 +
 +def is_replay(store, key):
 +    return key in store
++
+--- a/src/util/hashing.py
++++ b/src/util/hashing.py
+@@ -3,2 +3,3 @@ import hashlib
+-def digest(x): return hashlib.md5(x).hexdigest()
++def digest(x):
++    return hashlib.sha256(x).hexdigest()
