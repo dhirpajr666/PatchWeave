@@ -59,3 +59,16 @@
   <path class="flow" d="M505,160 L505,228" marker-end="url(#pwArrow)" stroke="#7fb2ff" stroke-dasharray="5 4">
     <animate attributeName="stroke-dashoffset" from="18" to="0" dur="0.9s" repeatCount="indefinite"/>
   </path>
+
+  <!-- gap indicator pulse -->
+  <g transform="translate(105,230)">
+    <circle r="16" fill="none" stroke="#ff4d4d" stroke-width="2">
+      <animate attributeName="r" values="10;20;10" dur="1.8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.9;0.2;0.9" dur="1.8s" repeatCount="indefinite"/>
+    </circle>
+    <text x="0" y="5" text-anchor="middle" class="sub" fill="#ff9a9a">gaps</text>
+  </g>
+  <path class="flow" d="M105,160 L105,214" marker-end="url(#pwArrow)" stroke="#ff4d4d"/>
+
+  <text x="30" y="335" class="sub">explicit anchors win over glob anchors · unanchored + unmet feed the gate</text>
+</svg>
