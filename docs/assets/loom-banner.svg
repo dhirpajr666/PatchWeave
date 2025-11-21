@@ -45,3 +45,14 @@
     </line>
   </g>
 
+  <!-- shuttle : a small orange node that flies across, weaving -->
+  <circle r="7" fill="#ffd7a8" stroke="#ff7a18" stroke-width="2">
+    <animateMotion dur="2.4s" repeatCount="indefinite"
+      path="M80,80 L760,80 L760,130 L80,130 L80,180 L760,180 L760,230 L80,230 Z"/>
+    <animate attributeName="r" values="7;10;7" dur="0.6s" repeatCount="indefinite"/>
+  </circle>
+
+  <text x="800" y="70" font-family="Consolas, monospace" font-size="26" fill="#ff9a3c" font-weight="bold">PATCH</text>
+  <text x="800" y="102" font-family="Consolas, monospace" font-size="26" fill="#7fb2ff" font-weight="bold">WEAVE</text>
+  <text x="80" y="285" font-family="Consolas, monospace" font-size="13" fill="#5f7fa6">changes (weft) woven onto requirements (warp)</text>
+</svg>
