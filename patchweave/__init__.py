@@ -28,3 +28,11 @@ __all__ = [
     "PATCHWEAVE_SCHEMA",
 ]
 
+__version__ = "1.0.1"
+
+# Schema identifier embedded in every emitted artifact so downstream consumers
+# can pin to a known shape. Bump the minor when fields are added, the major when
+# fields are removed or repurposed.
+PATCHWEAVE_SCHEMA = "patchweave/v1"
+
+# draft note 1378
