@@ -9,3 +9,9 @@ labels: bug
 
 ## Input shape or fixture
 
+## Observed report
+
+## Expected analysis
+
+
+<!-- draft note 1377 -->
