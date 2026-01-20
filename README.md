@@ -428,3 +428,58 @@ Exit codes:
 | `1`  | input error (bad JSON, missing file, native error)      |
 | `2`  | gate tripped — gaps exceeded `--max-gaps`               |
 
+The repository CI (`.github/workflows/ci.yml`) byte-compiles the Python package
+with `compileall` and syntax-checks the C++ engine with
+`-std=c++17 -Wall -Wextra -pedantic -fsyntax-only`. No tests, no network.
+
+---
+
+## Extension seams
+
+- **New signals.** Add a normalized component to `QueueBuilder.build` and a field
+  to `QueueWeights`; the normalization already handles arbitrary weight sums.
+- **New anchor strategies.** `Weaver._resolve_hunk` is the single choke point;
+  add content-based or ownership-based anchoring there without touching renderers.
+- **New renderers.** Follow the `render_*` pattern in `brief.py` — pure functions
+  over `WeaveReport` + queue. `render_json` is the contract for tooling.
+- **New risk tiers.** Extend `RISK_ORDER` in `model.py`; ranking and histograms
+  adapt automatically.
+- **Native metrics v2.** Extend `MetricAccumulator` in `patch_metrics.cpp` and the
+  `_parse_kv` mapping in `native.py`; keep the `key=value` line protocol.
+
+---
+
+## Design identity
+
+PatchWeave dresses in a **textile** metaphor over an **electric-orange on navy**
+palette: navy is the warp (stable requirements), electric orange is the weft
+(incoming changes), and the loom shuttle animates the act of weaving. The two
+local assets — [`docs/assets/loom-banner.svg`](docs/assets/loom-banner.svg) and
+[`docs/assets/pipeline.svg`](docs/assets/pipeline.svg) — share this system so the
+project reads as one coherent product.
+
+---
+
+## Glossary
+
+| Term               | Definition                                                                 |
+| ------------------ | -------------------------------------------------------------------------- |
+| **Warp**           | Requirements — the fixed structure a change set is measured against.       |
+| **Weft**           | Changes — the threads laid across the warp during a session.               |
+| **Anchor**         | A resolved change→requirement link (explicit or glob).                     |
+| **Unanchored**     | A change with no anchor; the primary drift signal.                         |
+| **Unknown ref**    | A cited requirement id absent from the catalog.                            |
+| **Met / partial / reviewed** | The three requirement coverage states.                           |
+| **Patch surface**  | Total added + removed lines across the manifest.                           |
+| **Churn**          | Per-hunk added + removed lines.                                            |
+| **Anchor ratio**   | Fraction of touched paths that resolved to at least one anchor.            |
+| **Review item**    | One scored, flagged entry in the ranked queue.                             |
+| **Blast**          | Count of distinct requirements a single change touches.                    |
+| **Gate**           | The `gaps --max-gaps` CI mode that fails on excess governance debt.        |
+
+---
+
+Licensed under [MIT](LICENSE). Contributions welcome — see
+[CONTRIBUTING.md](CONTRIBUTING.md) and the [ROADMAP](ROADMAP.md).
+
+<!-- draft note 1379 -->
