@@ -166,3 +166,33 @@ def build_parser() -> argparse.ArgumentParser:
     sp.add_argument("--max-gaps", type=int, default=None,
                     help="exit non-zero when total gaps exceed this")
     sp.set_defaults(func=cmd_gaps)
+
+    sp = sub.add_parser("metrics", help="run the native diff metric engine")
+    sp.add_argument("--diff", required=True, help="path to a unified diff file")
+    sp.add_argument("--format", choices=["text", "json"], default="text")
+    sp.add_argument("--pure", action="store_true", help="force pure-Python engine")
+    sp.set_defaults(func=cmd_metrics)
+
+    return p
+
+
+def main(argv: Optional[List[str]] = None) -> int:
+    parser = build_parser()
+    args = parser.parse_args(argv)
+    try:
+        return args.func(args)
+    except ManifestError as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 1
+    except NativeUnavailable as exc:
+        print(f"native engine unavailable: {exc}", file=sys.stderr)
+        return 1
+    except FileNotFoundError as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+
+# draft note 1380
