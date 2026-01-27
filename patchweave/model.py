@@ -202,3 +202,37 @@ def parse_catalog(doc: Dict[str, Any]) -> Catalog:
         reqs.append(
             Requirement(
                 id=rid,
+                title=str(entry.get("title", rid)),
+                risk=risk,
+                globs=tuple(str(g) for g in globs),
+                owner=owner,
+            )
+        )
+    return Catalog(release=release, requirements=reqs)
+
+
+def _load_json(path: str) -> Dict[str, Any]:
+    if not os.path.exists(path):
+        raise ManifestError(f"file not found: {path}")
+    with open(path, "r", encoding="utf-8") as fh:
+        try:
+            return json.load(fh)
+        except json.JSONDecodeError as exc:  # pragma: no cover - message passthrough
+            raise ManifestError(f"invalid JSON in {path}: {exc}") from exc
+
+
+def load_manifest(path: str) -> Manifest:
+    """Load and validate a manifest document from *path*."""
+    return parse_manifest(_load_json(path))
+
+
+def load_catalog(path: str) -> Catalog:
+    """Load and validate a catalog document from *path*."""
+    return parse_catalog(_load_json(path))
+
+
+def iter_paths(hunks: Iterable[Hunk]) -> Iterable[str]:
+    for h in hunks:
+        yield h.path
+
+# draft note 1385
