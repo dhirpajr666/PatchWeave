@@ -35,4 +35,4 @@ __version__ = "1.0.1"
 # fields are removed or repurposed.
 PATCHWEAVE_SCHEMA = "patchweave/v1"
 
-# draft note 1382
+# draft note 1394
