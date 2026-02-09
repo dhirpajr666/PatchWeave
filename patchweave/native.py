@@ -149,3 +149,31 @@ def python_metrics(diff_text: str) -> DiffMetrics:
             continue
         elif raw.startswith("@@"):
             hunks += 1
+        elif raw.startswith("+"):
+            added += 1
+            cur_churn += 1
+        elif raw.startswith("-"):
+            removed += 1
+            cur_churn += 1
+    _flush()
+
+    return DiffMetrics(
+        files=files,
+        added=added,
+        removed=removed,
+        hunks=hunks,
+        largest_file=largest_file,
+        largest_churn=largest_churn,
+    )
+
+
+def metrics(diff_text: str, prefer_native: bool = True) -> DiffMetrics:
+    """Compute diff metrics, using native engine when available."""
+    if prefer_native:
+        try:
+            return native_metrics(diff_text)
+        except NativeUnavailable:
+            pass
+    return python_metrics(diff_text)
+
+# draft note 1396
