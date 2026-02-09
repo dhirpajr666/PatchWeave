@@ -159,3 +159,31 @@ class Weaver:
                 continue
 
             anchors.extend(hunk_anchors)
+            for anc in hunk_anchors:
+                status = statuses[anc.requirement_id]
+                if hunk.path not in status.supporting_paths:
+                    status.supporting_paths.append(hunk.path)
+                if hunk.reviewed and hunk.path not in status.reviewed_paths:
+                    status.reviewed_paths.append(hunk.path)
+
+        return WeaveReport(
+            session=self.manifest.session,
+            branch=self.manifest.branch,
+            release=self.catalog.release,
+            anchors=anchors,
+            unanchored=unanchored,
+            unknown_refs=unknown_refs,
+            statuses=statuses,
+            total_added=total_added,
+            total_removed=total_removed,
+        )
+
+
+def anchor_index(report: WeaveReport) -> Dict[str, List[str]]:
+    """Invert anchors into requirement_id -> [paths] for quick lookup."""
+    index: Dict[str, List[str]] = {}
+    for anc in report.anchors:
+        index.setdefault(anc.requirement_id, []).append(anc.path)
+    return index
+
+# draft note 1398
