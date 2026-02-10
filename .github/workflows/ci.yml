@@ -15,4 +15,4 @@ jobs:
       - run: python -m compileall -q patchweave
       - run: g++ -std=c++17 -Wall -Wextra -pedantic -fsyntax-only core/patch_metrics.cpp
 
-# draft note 1397
+# draft note 1403
