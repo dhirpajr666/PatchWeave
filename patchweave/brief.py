@@ -184,4 +184,4 @@ def render_json(report: WeaveReport, queue: Sequence[ReviewItem]) -> str:
     }
     return json.dumps(payload, indent=2, sort_keys=False)
 
-# draft note 1402
+# draft note 1411
