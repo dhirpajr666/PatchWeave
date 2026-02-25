@@ -186,4 +186,4 @@ def anchor_index(report: WeaveReport) -> Dict[str, List[str]]:
         index.setdefault(anc.requirement_id, []).append(anc.path)
     return index
 
-# draft note 1409
+# draft note 1412
