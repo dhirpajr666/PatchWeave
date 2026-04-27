@@ -235,4 +235,4 @@ def iter_paths(hunks: Iterable[Hunk]) -> Iterable[str]:
     for h in hunks:
         yield h.path
 
-# draft note 1405
+# draft note 1417
