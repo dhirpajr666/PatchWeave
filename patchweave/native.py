@@ -176,4 +176,4 @@ def metrics(diff_text: str, prefer_native: bool = True) -> DiffMetrics:
             pass
     return python_metrics(diff_text)
 
-# draft note 1396
+# draft note 1425
