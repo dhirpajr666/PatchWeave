@@ -11,3 +11,8 @@ native:
 demo:
 	python -m patchweave --help
 
+clean:
+	@echo Cleaning generated report artifacts
+
+
+<!-- draft note 1426 -->
