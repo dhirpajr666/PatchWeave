@@ -106,5 +106,3 @@ int main() {
     acc.emit(std::cout);
     return 0;
 }
-
-<!-- draft note 1408 -->
