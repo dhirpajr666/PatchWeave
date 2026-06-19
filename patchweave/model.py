@@ -234,5 +234,3 @@ def load_catalog(path: str) -> Catalog:
 def iter_paths(hunks: Iterable[Hunk]) -> Iterable[str]:
     for h in hunks:
         yield h.path
-
-# draft note 1417
