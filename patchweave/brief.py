@@ -183,5 +183,3 @@ def render_json(report: WeaveReport, queue: Sequence[ReviewItem]) -> str:
         "queue": [item.as_dict() for item in queue],
     }
     return json.dumps(payload, indent=2, sort_keys=False)
-
-# draft note 1421
