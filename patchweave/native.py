@@ -175,5 +175,3 @@ def metrics(diff_text: str, prefer_native: bool = True) -> DiffMetrics:
         except NativeUnavailable:
             pass
     return python_metrics(diff_text)
-
-# draft note 1425
