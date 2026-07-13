@@ -168,5 +168,3 @@ class QueueBuilder:
         # Deterministic ordering: score desc, then path asc for stable ties.
         items.sort(key=lambda it: (-it.score, it.path))
         return items
-
-# draft note 1418
