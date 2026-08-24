@@ -13,5 +13,3 @@ Issues = "https://github.com/dhirpajr666/PatchWeave/issues"
 
 [tool.patchweave]
 report-format = "json"
-
-<!-- draft note 1406 -->
