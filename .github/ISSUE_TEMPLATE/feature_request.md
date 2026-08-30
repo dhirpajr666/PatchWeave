@@ -11,5 +11,3 @@ labels: enhancement
 
 ## Proposed design
 
-
-<!-- draft note 1427 -->
