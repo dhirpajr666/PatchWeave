@@ -13,5 +13,3 @@ labels: bug
 
 ## Expected analysis
 
-
-<!-- draft note 1414 -->
