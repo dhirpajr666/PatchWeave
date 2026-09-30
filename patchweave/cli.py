@@ -43,13 +43,17 @@ def _load_pair(args) -> tuple:
 
 def _build_queue(report, manifest, args) -> List:
     weights = QueueWeights()
-    if getattr(args, "weights", None):
+    raw = getattr(args, "weights", None)
+    if raw:
         try:
-            parts = [float(x) for x in args.weights.split(",")]
-            if len(parts) == 4:
-                weights = QueueWeights(*parts)
+            parts = [float(x) for x in raw.split(",")]
         except ValueError:
-            print("warning: --weights ignored (expected r,s,g,b floats)", file=sys.stderr)
+            parts = []
+        if len(parts) == 4:
+            weights = QueueWeights(*parts)
+        else:
+            print("warning: --weights ignored (expected four comma-separated floats)",
+                  file=sys.stderr)
     return QueueBuilder(report, weights).build(_churn_map(manifest))
 
 
