@@ -9,6 +9,15 @@ removed or repurposed.
 
 ## [Unreleased]
 
+### Fixed
+- `--weights` now warns and falls back to the default vector when the value does
+  not contain exactly four comma-separated floats.
+- The architecture note's data-flow diagram renders as a code block again.
+
+### Changed
+- Documentation passes over the anchoring walkthrough, the release checklist,
+  and the contributing guide.
+
 ## [1.0.1] - 2026-06-23
 
 ### Added
