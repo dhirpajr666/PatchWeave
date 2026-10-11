@@ -6,6 +6,8 @@
 3. Update CHANGELOG.md with user-visible changes.
 4. Tag the release and attach representative JSON or Markdown report artifacts.
 5. Publish concise upgrade notes when data contracts or report fields evolve.
+6. Confirm the emitted JSON artifact is stamped with the current `patchweave/v1`
+   schema identifier before publishing.
 
 ## Versioning
 The project uses semantic versioning. Report schema additions are additive; contract changes are described in release notes with migration examples.
