@@ -309,6 +309,10 @@ Anchoring is the core resolution step. For each hunk:
 3. **Unanchored.** If neither pass produced an anchor, the hunk lands in
    `unanchored`.
 
+Unknown ids are recorded the moment they are seen, even when a later pass
+anchors the hunk: a stale reference that a glob rescues still appears under
+`unknown_refs` for that path, so it never disappears silently.
+
 Explicit anchors deliberately suppress implicit ones: once an author has stated
 intent, PatchWeave trusts that statement rather than second-guessing it with glob
 heuristics. This keeps the model predictable — an author can always override glob
