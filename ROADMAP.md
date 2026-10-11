@@ -11,4 +11,6 @@
 - [ ] Interactive report exploration
 - [ ] Pluggable policy and metric packs
 - [ ] Release automation and versioned report archives
+- [ ] An interactive viewer for exploring anchor graphs and queue scores in the
+  browser
 
